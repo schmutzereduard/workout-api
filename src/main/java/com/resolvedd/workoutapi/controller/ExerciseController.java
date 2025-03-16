@@ -1,7 +1,6 @@
 package com.resolvedd.workoutapi.controller;
 
 import com.resolvedd.workoutapi.model.Exercise;
-import com.resolvedd.workoutapi.model.Set;
 import com.resolvedd.workoutapi.service.ExerciseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

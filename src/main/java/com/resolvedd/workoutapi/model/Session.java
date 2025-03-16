@@ -9,12 +9,12 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "workout_session")
+@Table(name = "session")
 public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "date")
     private LocalDate date;
@@ -24,9 +24,9 @@ public class Session {
 
     @ManyToMany
     @JoinTable(
-            name = "session_exercise",
+            name = "session_workout",
             joinColumns = @JoinColumn(name = "session_id"),
-            inverseJoinColumns = @JoinColumn(name = "exercise_id")
+            inverseJoinColumns = @JoinColumn(name = "workout_id")
     )
-    private List<Exercise> exercises = new ArrayList<>();
+    private List<Workout> workouts = new ArrayList<>();
 }

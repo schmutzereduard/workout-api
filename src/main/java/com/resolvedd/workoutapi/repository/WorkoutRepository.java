@@ -1,9 +1,9 @@
 package com.resolvedd.workoutapi.repository;
 
-import com.resolvedd.workoutapi.model.Muscle;
+import com.resolvedd.workoutapi.model.Workout;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MuscleRepository extends JpaRepository<Muscle, Long> {
+public interface WorkoutRepository extends JpaRepository<Workout, Long> {
 }

@@ -8,8 +8,8 @@ import java.math.BigDecimal;
 
 @Entity
 @Data
-@Table(name = "exercise_set")
-public class Set {
+@Table(name = "working_set")
+public class WorkingSet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
