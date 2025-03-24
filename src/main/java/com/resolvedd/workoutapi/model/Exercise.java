@@ -18,6 +18,9 @@ public class Exercise {
     @Column(name ="name")
     private String name;
 
+    @Column(name = "cues")
+    private String cues;
+
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL)
     private List<WorkingSet> workingSets = new ArrayList<>();
 }
