@@ -13,8 +13,8 @@ public class WorkingSetService {
 
     private final WorkingSetRepository workingSetRepository;
 
-    public List<WorkingSet> findAllByExerciseId(Long id) {
-        return workingSetRepository.findAllByExerciseId(id);
+    public List<WorkingSet> findAll() {
+        return workingSetRepository.findAll();
     }
 
     public WorkingSet save(WorkingSet workingSet) {

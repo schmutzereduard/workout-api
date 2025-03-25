@@ -3,6 +3,9 @@ package com.resolvedd.workoutapi.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "workout_session")
@@ -12,9 +15,11 @@ public class WorkoutSession {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "training_day_id")
-    private TrainingDay trainingDay;
+    @Column(name = "date")
+    private LocalDate date;
+
+    @Column(name = "user")
+    private String user;
 
     @ManyToOne
     @JoinColumn(name = "workout_id")
@@ -22,4 +27,7 @@ public class WorkoutSession {
 
     @Column(name = "notes")
     private String notes;
+
+    @OneToMany(mappedBy = "workoutSession")
+    private List<SessionExercise> sessionExercises;
 }

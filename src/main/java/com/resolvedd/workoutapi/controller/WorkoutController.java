@@ -20,12 +20,12 @@ public class WorkoutController {
         return ResponseEntity.ok(workoutService.findAll());
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<Workout> addWorkout(@RequestBody Workout workout) {
         return ResponseEntity.ok(workoutService.save(workout));
     }
 
-    @PutMapping("/edit")
+    @PutMapping
     public ResponseEntity<Workout> updateWorkout(@RequestBody Workout workout) {
         return ResponseEntity.ok(workoutService.save(workout));
     }

@@ -1,6 +1,5 @@
 package com.resolvedd.workoutapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,17 +14,16 @@ public class WorkingSet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "number")
-    private int number;
-
     @Column(name = "weight", precision = 5, scale = 2, nullable = false)
     private BigDecimal weight;
 
-    @Column(name = "repetitions")
-    private int repetitions;
+    @Column(name = "goal")
+    private int goal;
+
+    @Column(name = "actual")
+    private int actual;
 
     @ManyToOne
-    @JoinColumn(name = "exercise_id")
-    @JsonIgnore
-    private Exercise exercise;
+    @JoinColumn(name = "session_exercise_id")
+    private SessionExercise sessionExercise;
 }

@@ -1,7 +1,6 @@
 package com.resolvedd.workoutapi.service;
 
 import com.resolvedd.workoutapi.model.Exercise;
-import com.resolvedd.workoutapi.model.WorkingSet;
 import com.resolvedd.workoutapi.repository.ExerciseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,11 +18,6 @@ public class ExerciseService {
     }
 
     public Exercise save(Exercise exercise) {
-        if (exercise.getWorkingSets() != null) {
-            for (WorkingSet workingSet : exercise.getWorkingSets()) {
-                workingSet.setExercise(exercise); // Ensuring the relationship
-            }
-        }
         return exerciseRepository.save(exercise);
     }
 

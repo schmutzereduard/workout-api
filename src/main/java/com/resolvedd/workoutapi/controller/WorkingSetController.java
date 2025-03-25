@@ -16,8 +16,8 @@ public class WorkingSetController {
     private final WorkingSetService workingSetService;
 
     @GetMapping("/{exerciseId}")
-    public ResponseEntity<List<WorkingSet>> getSets(@PathVariable Long exerciseId) {
-        return ResponseEntity.ok(workingSetService.findAllByExerciseId(exerciseId));
+    public ResponseEntity<List<WorkingSet>> getSets() {
+        return ResponseEntity.ok(workingSetService.findAll());
     }
 
     @PutMapping

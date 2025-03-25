@@ -20,14 +20,14 @@ public class WorkoutSessionController {
         return ResponseEntity.ok(workoutSessionService.findAll());
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<WorkoutSession> addWorkoutSession(@RequestBody WorkoutSession trainingDay) {
-        return ResponseEntity.ok(workoutSessionService.save(trainingDay));
+    @PostMapping
+    public ResponseEntity<WorkoutSession> addWorkoutSession(@RequestBody WorkoutSession workoutSession) {
+        return ResponseEntity.ok(workoutSessionService.save(workoutSession));
     }
 
-    @PutMapping("/edit")
-    public ResponseEntity<WorkoutSession> updateWorkoutSession(@RequestBody WorkoutSession trainingDay) {
-        return ResponseEntity.ok(workoutSessionService.save(trainingDay));
+    @PutMapping
+    public ResponseEntity<WorkoutSession> updateWorkoutSession(@RequestBody WorkoutSession workoutSession) {
+        return ResponseEntity.ok(workoutSessionService.save(workoutSession));
     }
 
     @DeleteMapping("/{id}")
