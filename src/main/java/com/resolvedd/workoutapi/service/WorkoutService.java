@@ -21,6 +21,10 @@ public class WorkoutService {
         return workoutRepository.save(workout);
     }
 
+    public void deleteAllById(List<Long> ids) {
+        workoutRepository.deleteAllById(ids);
+    }
+
     public void deleteById(Long id) {
         workoutRepository.deleteById(id);
     }

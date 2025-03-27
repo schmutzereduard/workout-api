@@ -21,6 +21,10 @@ public class WorkoutSessionService {
         return workoutSessionRepository.save(workoutSession);
     }
 
+    public void deleteAllById(List<Long> ids) {
+        workoutSessionRepository.deleteAllById(ids);
+    }
+
     public void deleteById(Long id) {
         workoutSessionRepository.deleteById(id);
     }

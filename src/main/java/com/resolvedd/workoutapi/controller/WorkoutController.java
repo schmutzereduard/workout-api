@@ -30,6 +30,12 @@ public class WorkoutController {
         return ResponseEntity.ok(workoutService.save(workout));
     }
 
+    @DeleteMapping
+    public ResponseEntity<Void> deleteWorkouts(@RequestBody List<Long> ids) {
+        workoutService.deleteAllById(ids);
+        return ResponseEntity.ok(null);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteWorkout(@RequestParam Long id) {
         workoutService.deleteById(id);

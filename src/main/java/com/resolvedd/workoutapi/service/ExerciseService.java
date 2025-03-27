@@ -21,6 +21,10 @@ public class ExerciseService {
         return exerciseRepository.save(exercise);
     }
 
+    public void deleteAllById(List<Long> ids) {
+        exerciseRepository.deleteAllById(ids);
+    }
+
     public void deleteById(Long id) {
         exerciseRepository.deleteById(id);
     }

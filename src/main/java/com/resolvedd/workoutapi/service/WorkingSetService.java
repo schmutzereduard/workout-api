@@ -21,6 +21,10 @@ public class WorkingSetService {
         return workingSetRepository.save(workingSet);
     }
 
+    public void deleteAllById(List<Long> ids) {
+        workingSetRepository.deleteAllById(ids);
+    }
+
     public void deleteById(Long id) {
         workingSetRepository.deleteById(id);
     }

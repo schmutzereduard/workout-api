@@ -31,6 +31,12 @@ public class ExerciseController {
         return ResponseEntity.ok(exerciseService.save(exercise));
     }
 
+    @DeleteMapping
+    public ResponseEntity<Void> deleteExercises(@RequestBody List<Long> ids) {
+        exerciseService.deleteAllById(ids);
+        return ResponseEntity.ok(null);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExercise(@PathVariable Long id) {
         exerciseService.deleteById(id);

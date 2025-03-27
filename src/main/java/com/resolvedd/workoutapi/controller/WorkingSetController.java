@@ -30,6 +30,12 @@ public class WorkingSetController {
         return ResponseEntity.ok(workingSetService.save(workingSet));
     }
 
+    @DeleteMapping
+    public ResponseEntity<Void> deleteSets(@RequestBody List<Long> ids) {
+        workingSetService.deleteAllById(ids);
+        return ResponseEntity.ok(null);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSet(@PathVariable Long id) {
         workingSetService.deleteById(id);
