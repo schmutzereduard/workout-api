@@ -1,14 +1,14 @@
 package com.resolvedd.workoutapi.repository;
 
 import com.resolvedd.workoutapi.model.SessionExercise;
-import com.resolvedd.workoutapi.model.WorkingSet;
+import com.resolvedd.workoutapi.model.WorkoutSession;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface WorkingSetRepository extends JpaRepository<WorkingSet, Long> {
+public interface SessionExerciseRepository extends JpaRepository<SessionExercise, Long> {
 
-    List<WorkingSet> findAllBySessionExercise(SessionExercise sessionExercise);
+    List<SessionExercise> findAllByWorkoutSession(WorkoutSession workoutSession);
 }

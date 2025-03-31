@@ -1,5 +1,6 @@
 package com.resolvedd.workoutapi.controller;
 
+import com.resolvedd.workoutapi.dto.WorkoutSessionDTO;
 import com.resolvedd.workoutapi.model.WorkoutSession;
 import com.resolvedd.workoutapi.service.WorkoutSessionService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class WorkoutSessionController {
     private final WorkoutSessionService workoutSessionService;
 
     @GetMapping
-    public ResponseEntity<List<WorkoutSession>> getWorkoutSessions() {
+    public ResponseEntity<List<WorkoutSessionDTO>> getWorkoutSessions() {
         return ResponseEntity.ok(workoutSessionService.findAll());
     }
 
