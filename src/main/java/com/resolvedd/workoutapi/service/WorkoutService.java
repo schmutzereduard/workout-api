@@ -1,5 +1,7 @@
 package com.resolvedd.workoutapi.service;
 
+import com.resolvedd.workoutapi.dto.WorkoutDTO;
+import com.resolvedd.workoutapi.mapper.WorkoutMapper;
 import com.resolvedd.workoutapi.model.Workout;
 import com.resolvedd.workoutapi.model.WorkoutExercise;
 import com.resolvedd.workoutapi.repository.WorkoutExerciseRepository;
@@ -16,16 +18,27 @@ public class WorkoutService {
 
     private final WorkoutRepository workoutRepository;
     private final WorkoutExerciseRepository workoutExerciseRepository;
+    private final WorkoutMapper workoutMapper;
 
-    public List<Workout> findAll() {
-        return workoutRepository.findAll();
+    public List<WorkoutDTO> findAll() {
+        return workoutRepository.findAll()
+                .stream()
+                .map(workoutMapper::toDTO)
+                .toList();
     }
 
-    public Workout save(Workout workout) {
-        return workoutRepository.save(workout);
+    public List<WorkoutDTO> findAllByUserId(Long userId) {
+        return workoutRepository.findAllByUserId(userId)
+                .stream()
+                .map(workoutMapper::toDTO)
+                .toList();
     }
 
-    @Transactional
+    public WorkoutDTO save(WorkoutDTO workoutDTO) {
+        Workout workout = workoutRepository.save(workoutMapper.toEntity(workoutDTO));
+        return workoutMapper.toDTO(workout);
+    }
+
     public void deleteAllById(List<Long> ids) {
         for (Long id : ids) {
             deleteById(id);
@@ -34,11 +47,10 @@ public class WorkoutService {
 
     @Transactional
     public void deleteById(Long id) {
-        //  Delete entries in the join table
+
         List<WorkoutExercise> workoutExercises = workoutExerciseRepository.findAllByWorkoutId(id);
         workoutExerciseRepository.deleteAll(workoutExercises);
 
-        //  Now delete the workout
         workoutRepository.deleteById(id);
     }
 }

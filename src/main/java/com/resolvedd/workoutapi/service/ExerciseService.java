@@ -1,5 +1,7 @@
 package com.resolvedd.workoutapi.service;
 
+import com.resolvedd.workoutapi.dto.ExerciseDTO;
+import com.resolvedd.workoutapi.mapper.ExerciseMapper;
 import com.resolvedd.workoutapi.model.Exercise;
 import com.resolvedd.workoutapi.repository.ExerciseRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,13 +14,17 @@ import java.util.List;
 public class ExerciseService {
 
     private final ExerciseRepository exerciseRepository;
+    private final ExerciseMapper exerciseMapper;
 
-    public List<Exercise> findAll() {
-        return exerciseRepository.findAll();
+    public List<ExerciseDTO> findAll() {
+        return exerciseRepository.findAll().stream()
+                .map(exerciseMapper::toDTO)
+                .toList();
     }
 
-    public Exercise save(Exercise exercise) {
-        return exerciseRepository.save(exercise);
+    public ExerciseDTO save(ExerciseDTO exerciseDTO) {
+        Exercise exercise = exerciseRepository.save(exerciseMapper.toEntity(exerciseDTO));
+        return exerciseMapper.toDTO(exercise);
     }
 
     public void deleteAllById(List<Long> ids) {

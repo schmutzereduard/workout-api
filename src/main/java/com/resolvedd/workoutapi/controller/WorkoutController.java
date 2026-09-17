@@ -1,6 +1,6 @@
 package com.resolvedd.workoutapi.controller;
 
-import com.resolvedd.workoutapi.model.Workout;
+import com.resolvedd.workoutapi.dto.WorkoutDTO;
 import com.resolvedd.workoutapi.service.WorkoutService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,18 +16,18 @@ public class WorkoutController {
     private final WorkoutService workoutService;
 
     @GetMapping
-    public ResponseEntity<List<Workout>> getWorkouts() {
+    public ResponseEntity<List<WorkoutDTO>> getWorkouts() {
         return ResponseEntity.ok(workoutService.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<Workout> addWorkout(@RequestBody Workout workout) {
-        return ResponseEntity.ok(workoutService.save(workout));
+    public ResponseEntity<WorkoutDTO> addWorkout(@RequestBody WorkoutDTO workoutDTO) {
+        return ResponseEntity.ok(workoutService.save(workoutDTO));
     }
 
     @PutMapping
-    public ResponseEntity<Workout> updateWorkout(@RequestBody Workout workout) {
-        return ResponseEntity.ok(workoutService.save(workout));
+    public ResponseEntity<WorkoutDTO> updateWorkout(@RequestBody WorkoutDTO workoutDTO) {
+        return ResponseEntity.ok(workoutService.save(workoutDTO));
     }
 
     @DeleteMapping
