@@ -1,8 +1,10 @@
 package com.resolvedd.workoutapi.controller;
 
 import com.resolvedd.workoutapi.dto.WorkoutDTO;
+import com.resolvedd.workoutapi.service.AuthService;
 import com.resolvedd.workoutapi.service.WorkoutService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +15,12 @@ import java.util.List;
 @RequestMapping("/workouts")
 public class WorkoutController {
 
+    private final AuthService authService;
     private final WorkoutService workoutService;
 
     @GetMapping
-    public ResponseEntity<List<WorkoutDTO>> getWorkouts() {
-        return ResponseEntity.ok(workoutService.findAll());
+    public ResponseEntity<List<WorkoutDTO>> getWorkouts(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
+        return ResponseEntity.ok(workoutService.findAllByUserId(authService.isAuthorized(token)));
     }
 
     @PostMapping
