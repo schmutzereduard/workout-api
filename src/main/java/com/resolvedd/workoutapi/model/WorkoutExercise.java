@@ -24,7 +24,7 @@ public class WorkoutExercise {
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
 
-    @Column(name = "order")
+    @Column(name = "order", nullable = false)
     private int order;
 
     @Column(name = "notes")

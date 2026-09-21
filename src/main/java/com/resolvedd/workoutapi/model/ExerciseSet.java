@@ -20,10 +20,10 @@ public class ExerciseSet {
     @Column(name = "weight", precision = 5, scale = 2, nullable = false)
     private BigDecimal weight;
 
-    @Column(name = "target_repetitions")
+    @Column(name = "target_repetitions", nullable = false)
     private int targetRepetitions;
 
-    @Column(name = "actual_repetitions")
+    @Column(name = "actual_repetitions", nullable = false)
     private int actualRepetitions;
 
     @Column(name = "is_completed")

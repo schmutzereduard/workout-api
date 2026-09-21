@@ -22,9 +22,17 @@ public class ExerciseService {
                 .toList();
     }
 
-    public ExerciseDTO save(ExerciseDTO exerciseDTO) {
-        Exercise exercise = exerciseRepository.save(exerciseMapper.toEntity(exerciseDTO));
-        return exerciseMapper.toDTO(exercise);
+    public List<ExerciseDTO> findAllByUserId(Long userId) {
+        return exerciseRepository.findAllByUserId(userId)
+                .stream()
+                .map(exerciseMapper::toDTO)
+                .toList();
+    }
+
+    public ExerciseDTO save(Long userId, ExerciseDTO exerciseDTO) {
+        Exercise exercise = exerciseMapper.toEntity(exerciseDTO);
+        exercise.setUserId(userId);
+        return exerciseMapper.toDTO(exerciseRepository.save(exercise));
     }
 
     public void deleteAllById(List<Long> ids) {

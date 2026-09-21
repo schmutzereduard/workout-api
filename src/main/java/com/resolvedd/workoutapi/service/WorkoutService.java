@@ -20,13 +20,6 @@ public class WorkoutService {
     private final WorkoutExerciseRepository workoutExerciseRepository;
     private final WorkoutMapper workoutMapper;
 
-    public List<WorkoutDTO> findAll() {
-        return workoutRepository.findAll()
-                .stream()
-                .map(workoutMapper::toDTO)
-                .toList();
-    }
-
     public List<WorkoutDTO> findAllByUserId(Long userId) {
         return workoutRepository.findAllByUserId(userId)
                 .stream()
@@ -34,9 +27,10 @@ public class WorkoutService {
                 .toList();
     }
 
-    public WorkoutDTO save(WorkoutDTO workoutDTO) {
-        Workout workout = workoutRepository.save(workoutMapper.toEntity(workoutDTO));
-        return workoutMapper.toDTO(workout);
+    public WorkoutDTO save(Long userId, WorkoutDTO workoutDTO) {
+        Workout workout = workoutMapper.toEntity(workoutDTO);
+        workout.setUserId(userId);
+        return workoutMapper.toDTO(workoutRepository.save(workout));
     }
 
     public void deleteAllById(List<Long> ids) {

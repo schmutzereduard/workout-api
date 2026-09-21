@@ -3,6 +3,7 @@ package com.resolvedd.workoutapi.controller;
 import com.resolvedd.workoutapi.dto.WorkoutDTO;
 import com.resolvedd.workoutapi.service.AuthService;
 import com.resolvedd.workoutapi.service.WorkoutService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +25,21 @@ public class WorkoutController {
     }
 
     @PostMapping
-    public ResponseEntity<WorkoutDTO> addWorkout(@RequestBody WorkoutDTO workoutDTO) {
-        return ResponseEntity.ok(workoutService.save(workoutDTO));
+    public ResponseEntity<WorkoutDTO> addWorkout(
+            @RequestHeader(HttpHeaders.AUTHORIZATION) String token,
+            @Valid @RequestBody WorkoutDTO workoutDTO
+    ) {
+        Long userId = authService.isAuthorized(token);
+        return ResponseEntity.ok(workoutService.save(userId, workoutDTO));
     }
 
     @PutMapping
-    public ResponseEntity<WorkoutDTO> updateWorkout(@RequestBody WorkoutDTO workoutDTO) {
-        return ResponseEntity.ok(workoutService.save(workoutDTO));
+    public ResponseEntity<WorkoutDTO> updateWorkout(
+            @RequestHeader(HttpHeaders.AUTHORIZATION) String token,
+            @Valid @RequestBody WorkoutDTO workoutDTO
+    ) {
+        Long userId = authService.isAuthorized(token);
+        return ResponseEntity.ok(workoutService.save(userId, workoutDTO));
     }
 
     @DeleteMapping
