@@ -24,11 +24,15 @@ public class ExerciseSetDTO {
 
     @NotNull(message = EXERCISE_SET_TARGET_REP_VALIDATION)
     @Positive(message = EXERCISE_SET_TARGET_REP_VALIDATION2)
-    private int targetRepetitions;
+    private int targetRepetitionsMin;
+
+    @NotNull(message = EXERCISE_SET_TARGET_REP_VALIDATION)
+    @Positive(message = EXERCISE_SET_TARGET_REP_VALIDATION2)
+    private int targetRepetitionsMax;
 
     @NotNull(message = EXERCISE_SET_ACTUAL_REP_VALIDATION)
     @PositiveOrZero(message = EXERCISE_SET_ACTUAL_REP_VALIDATION2)
     private int actualRepetitions;
 
-    private boolean isCompleted;
+    private boolean isCompleted = actualRepetitions >= targetRepetitionsMax;
 }

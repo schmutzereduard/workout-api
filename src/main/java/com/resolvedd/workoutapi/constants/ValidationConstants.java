@@ -18,4 +18,11 @@ public class ValidationConstants {
     public static final String EXERCISE_SET_ACTUAL_REP_VALIDATION2 = "Actual repetitions must be equal or greater than 0!";
     public static final String WORKOUT_EXERCISE_VALIDATION = "Exercise order number is required!";
     public static final String WORKOUT_EXERCISE_VALIDATION2 = "Exercise order number must be a positive number!";
+    public static final String GENDER_VALIDATION = "Gender is required!";
+    public static final String GENDER_VALIDATION2 = "Gender must be either M or F!";
+    public static final String DATE_OF_BIRTH_VALIDATION = "Date of birth is required!";
+    public static final String WEIGHT_VALIDATION = "Weight is required!";
+    public static final String WEIGHT_VALIDATION2 = "Weight must be a positive number!";
+    public static final String HEIGHT_VALIDATION = "Height is required!";
+    public static final String HEIGHT_VALIDATION2 = "Height must be a positive number!";
 }

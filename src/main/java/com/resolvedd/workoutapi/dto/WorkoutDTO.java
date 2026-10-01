@@ -21,7 +21,7 @@ public class WorkoutDTO {
     @NotNull(message = WORKOUT_DATE_VALIDATION)
     private LocalDateTime date;
 
-    @Size(min = 0, max = 255, message = WORKOUT_NOTES_VALIDATION)
+    @Size(max = 255, message = WORKOUT_NOTES_VALIDATION)
     private String notes;
 
     private List<WorkoutExerciseDTO> exercises;

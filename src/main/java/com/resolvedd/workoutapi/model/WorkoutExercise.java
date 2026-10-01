@@ -9,7 +9,15 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "workout_exercise")
+@Table(
+        name = "workout_exercise",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_workout_exercise_order",
+                        columnNames = {"workout_id", "exercise_id", "order"}
+                )
+        }
+)
 public class WorkoutExercise {
 
     @Id
@@ -24,7 +32,7 @@ public class WorkoutExercise {
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
 
-    @Column(name = "order", nullable = false)
+    @Column(name = "order", unique = true, nullable = false)
     private int order;
 
     @Column(name = "notes")
