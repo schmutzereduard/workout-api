@@ -17,6 +17,12 @@ public class UserInfo {
     @Column(name = "user_id", unique = true, nullable = false)
     private Long userId;
 
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
     @Column(name = "gender", nullable = false)
     private String gender;
 

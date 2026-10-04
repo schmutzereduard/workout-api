@@ -11,6 +11,12 @@ import static com.resolvedd.workoutapi.constants.ValidationConstants.*;
 @Data
 public class UserInfoDTO {
 
+    @NotBlank(message = FIRST_NAME_VALIDATION)
+    private String firstName;
+
+    @NotBlank(message = LAST_NAME_VALIDATION)
+    private String lastName;
+
     @NotBlank(message = GENDER_VALIDATION)
     @Pattern(regexp = "^[MF]$", message = GENDER_VALIDATION2)
     private String gender;

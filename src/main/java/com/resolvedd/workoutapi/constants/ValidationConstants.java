@@ -25,4 +25,6 @@ public class ValidationConstants {
     public static final String WEIGHT_VALIDATION2 = "Weight must be a positive number!";
     public static final String HEIGHT_VALIDATION = "Height is required!";
     public static final String HEIGHT_VALIDATION2 = "Height must be a positive number!";
+    public static final String FIRST_NAME_VALIDATION = "First name is required!";
+    public static final String LAST_NAME_VALIDATION = "Last name is required!";
 }
