@@ -1,0 +1,45 @@
+name: Build and Deploy to GCP
+
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build Java JAR file
+        run: |
+          chmod +x mvnw
+          ./mvnw clean package -DskipTests
+
+      - name: Copy JAR to GCP VM via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ vars.GCP_HOST }}
+          username: ${{ vars.GCP_USERNAME }}
+          key: ${{ secrets.GCP_SSH_KEY }}
+          source: "target/*.jar"            # For Maven (or build/libs/*.jar for Gradle)
+          target: "/home/${{ vars.GCP_USERNAME }}/"
+          strip_components: 1
+
+      - name: Restart Systemd Service via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ vars.GCP_HOST }}
+          username: ${{ vars.GCP_USERNAME }}
+          key: ${{ secrets.GCP_SSH_KEY }}
+          script: |
+            sudo systemctl restart workout-service.service
+            sudo systemctl status workout-service.service --no-pager
