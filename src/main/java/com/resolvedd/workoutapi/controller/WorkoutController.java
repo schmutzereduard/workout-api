@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/workouts")
+@RequestMapping("/api/workout/workouts")
 public class WorkoutController {
 
     private final AuthService authService;
