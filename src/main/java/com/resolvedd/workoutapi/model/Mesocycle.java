@@ -1,0 +1,35 @@
+package com.resolvedd.workoutapi.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDate;
+
+@Entity
+@Data
+@Table(name = "mesocycle")
+public class Mesocycle {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "target_weeks", nullable = false)
+    private Integer targetWeeks;
+
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+    @Column(name = "end_date")
+    private LocalDate endDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private MesocycleStatus status = MesocycleStatus.INACTIVE;
+}

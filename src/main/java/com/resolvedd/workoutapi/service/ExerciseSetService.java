@@ -6,6 +6,7 @@ import com.resolvedd.workoutapi.model.ExerciseSet;
 import com.resolvedd.workoutapi.repository.ExerciseSetRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,15 +24,18 @@ public class ExerciseSetService {
                 .toList();
     }
 
+    @Transactional
     public ExerciseSetDTO save(ExerciseSetDTO exerciseSetDTO) {
         ExerciseSet exerciseSet = exerciseSetRepository.save(exerciseSetMapper.toEntity(exerciseSetDTO));
         return exerciseSetMapper.toDTO(exerciseSet);
     }
 
+    @Transactional
     public void deleteAllById(List<Long> ids) {
         exerciseSetRepository.deleteAllById(ids);
     }
 
+    @Transactional
     public void deleteById(Long id) {
         exerciseSetRepository.deleteById(id);
     }

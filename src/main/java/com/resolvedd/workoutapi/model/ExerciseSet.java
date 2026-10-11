@@ -28,17 +28,8 @@ public class ExerciseSet {
     @Column(name = "weight", precision = 5, scale = 2, nullable = false)
     private BigDecimal weight;
 
-    @Column(name = "target_repetitions_min", nullable = false)
-    private int targetRepetitionsMin;
-
-    @Column(name = "target_repetitions_max", nullable = false)
-    private int targetRepetitionsMax;
-
     @Column(name = "actual_repetitions", nullable = false)
     private int actualRepetitions;
-
-    @Column(name = "is_completed", nullable = false)
-    private boolean isCompleted;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "workout_exercise_id")

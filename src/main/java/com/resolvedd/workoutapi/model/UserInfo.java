@@ -23,8 +23,9 @@ public class UserInfo {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)
-    private String gender;
+    private UserGender gender;
 
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;

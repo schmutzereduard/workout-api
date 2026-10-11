@@ -6,9 +6,9 @@ import com.resolvedd.workoutapi.model.Workout;
 import com.resolvedd.workoutapi.model.WorkoutExercise;
 import com.resolvedd.workoutapi.repository.WorkoutExerciseRepository;
 import com.resolvedd.workoutapi.repository.WorkoutRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,12 +27,14 @@ public class WorkoutService {
                 .toList();
     }
 
+    @Transactional
     public WorkoutDTO save(Long userId, WorkoutDTO workoutDTO) {
         Workout workout = workoutMapper.toEntity(workoutDTO);
         workout.setUserId(userId);
         return workoutMapper.toDTO(workoutRepository.save(workout));
     }
 
+    @Transactional
     public void deleteAllById(List<Long> ids) {
         for (Long id : ids) {
             deleteById(id);
