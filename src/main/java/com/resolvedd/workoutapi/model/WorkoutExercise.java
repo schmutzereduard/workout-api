@@ -14,7 +14,7 @@ import java.util.List;
         uniqueConstraints = {
                 @UniqueConstraint(
                         name = "uk_workout_exercise_order",
-                        columnNames = {"workout_id", "exercise_id", "order"}
+                        columnNames = {"workout_id", "exercise_id", "order_in_workout"}
                 )
         }
 )
@@ -32,8 +32,8 @@ public class WorkoutExercise {
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
 
-    @Column(name = "order", unique = true, nullable = false)
-    private int order;
+    @Column(name = "order_in_workout", unique = true, nullable = false)
+    private int order_in_workout;
 
     @Column(name = "notes")
     private String notes;

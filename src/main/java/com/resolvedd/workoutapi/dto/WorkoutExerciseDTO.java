@@ -32,7 +32,7 @@ public class WorkoutExerciseDTO {
             description = WORKOUT_EXERCISE_SCHEMA_ORDER_DESCRIPTION,
             requiredMode = Schema.RequiredMode.REQUIRED
     )
-    private int order;
+    private int orderInWorkout;
 
     @Schema(
             description = WORKOUT_EXERCISE_SCHEMA_NOTES_DESCRIPTION,
