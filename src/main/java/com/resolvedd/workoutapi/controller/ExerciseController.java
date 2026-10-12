@@ -19,32 +19,58 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.resolvedd.workoutapi.constants.ControllerConstants.EXERCISE_CONTROLLER_REQUEST_MAPPING;
+import static com.resolvedd.workoutapi.constants.OpenApiConstants.*;
+
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/workout/exercises")
-@Tag(name = "Exercises Management", description = "Endpoints for managing user's exercises")
-@SecurityRequirement(name = "bearerAuth")
+@RequestMapping(EXERCISE_CONTROLLER_REQUEST_MAPPING)
+@Tag(
+        name = EXERCISE_CONTROLLER_TAG_NAME,
+        description = EXERCISE_CONTROLLER_TAG_DESCRIPTION
+)
+@SecurityRequirement(name = SECURITY_SCHEME_NAME)
 public class ExerciseController {
 
     private final AuthService authService;
     private final ExerciseService exerciseService;
 
-    @Operation(summary = "Get all user's exercises", description = "Retrieves a list of all exercises belonging to the authenticated user.")
-    @ApiResponse(
-            responseCode = "200",
-            description = "Successfully retrieved list",
-            content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ExerciseDTO.class)))
+    @Operation(
+            summary = EXERCISE_CONTROLLER_GET_EXERCISES_OPERATION_SUMMARY,
+            description = EXERCISE_CONTROLLER_GET_EXERCISES_OPERATION_DESCRIPTION
     )
-    @ApiResponse(responseCode = "401", description = "User is not authorized", content = @Content)
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_OK,
+            description = EXERCISE_CONTROLLER_GET_EXERCISES_OK_DESCRIPTION,
+            content = @Content(
+                    mediaType = JSON_MEDIA_TYPE,
+                    array = @ArraySchema(schema = @Schema(implementation = ExerciseDTO.class))
+            )
+    )
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_UNAUTHORIZED,
+            description = RESPONSE_CODE_UNAUTHORIZED_DESCRIPTION,
+            content = @Content
+    )
     @GetMapping
     public ResponseEntity<List<ExerciseDTO>> getExercises(
             @Parameter(hidden = true) @RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
         return ResponseEntity.ok(exerciseService.findAllByUserId(authService.isAuthorized(token)));
     }
 
-    @Operation(summary = "Update an exercise", description = "Updates an existing exercise for the authenticated user.")
-    @ApiResponse(responseCode = "200", description = "Exercise updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ExerciseDTO.class)))
-    @ApiResponse(responseCode = "401", description = "User is not authorized", content = @Content)
+    @Operation(
+            summary = EXERCISE_CONTROLLER_PUT_EXERCISE_OPERATION_SUMMARY,
+            description = EXERCISE_CONTROLLER_PUT_EXERCISE_OPERATION_DESCRIPTION
+    )
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_OK,
+            description = EXERCISE_CONTROLLER_PUT_EXERCISE_OK_DESCRIPTION,
+            content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = ExerciseDTO.class)))
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_UNAUTHORIZED,
+            description = RESPONSE_CODE_UNAUTHORIZED_DESCRIPTION,
+            content = @Content
+    )
     @PutMapping
     public ResponseEntity<ExerciseDTO> updateExercise(
             @Parameter(hidden = true) @RequestHeader(HttpHeaders.AUTHORIZATION) String token,
@@ -54,13 +80,20 @@ public class ExerciseController {
         return ResponseEntity.ok(exerciseService.save(userId, exerciseDTO));
     }
 
-    @Operation(summary = "Create a new exercise", description = "Registers a new exercise for the authenticated user.")
-    @ApiResponse(
-            responseCode = "201",
-            description = "Exercise created successfully",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ExerciseDTO.class))
+    @Operation(
+            summary = EXERCISE_CONTROLLER_POST_EXERCISE_OPERATION_SUMMARY,
+            description = EXERCISE_CONTROLLER_POST_EXERCISE_OPERATION_DESCRIPTION
     )
-    @ApiResponse(responseCode = "401", description = "User is not authorized", content = @Content)
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_CREATED,
+            description = EXERCISE_CONTROLLER_POST_EXERCISE_OK_DESCRIPTION,
+            content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = ExerciseDTO.class))
+    )
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_UNAUTHORIZED,
+            description = RESPONSE_CODE_UNAUTHORIZED_DESCRIPTION,
+            content = @Content
+    )
     @PostMapping
     public ResponseEntity<ExerciseDTO> addExercise(
             @Parameter(hidden = true) @RequestHeader(HttpHeaders.AUTHORIZATION) String token,
@@ -70,9 +103,20 @@ public class ExerciseController {
         return ResponseEntity.status(201).body(exerciseService.save(userId, exerciseDTO));
     }
 
-    @Operation(summary = "Delete multiple exercises", description = "Deletes a batch of exercises by their IDs.")
-    @ApiResponse(responseCode = "204", description = "Exercises deleted successfully", content = @Content)
-    @ApiResponse(responseCode = "401", description = "User is not authorized", content = @Content)
+    @Operation(
+            summary = EXERCISE_CONTROLLER_DELETE_EXERCISES_OPERATION_SUMMARY,
+            description = EXERCISE_CONTROLLER_DELETE_EXERCISES_OPERATION_DESCRIPTION
+    )
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_NO_CONTENT,
+            description = EXERCISE_CONTROLLER_DELETE_EXERCISES_OK_DESCRIPTION,
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_UNAUTHORIZED,
+            description = RESPONSE_CODE_UNAUTHORIZED_DESCRIPTION,
+            content = @Content
+    )
     @DeleteMapping
     public ResponseEntity<Void> deleteExercises(
             @Parameter(hidden = true) @RequestHeader(HttpHeaders.AUTHORIZATION) String token,
@@ -83,9 +127,20 @@ public class ExerciseController {
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Delete an exercise by ID", description = "Deletes a specific exercise using its unique identifier.")
-    @ApiResponse(responseCode = "204", description = "Exercise deleted successfully", content = @Content)
-    @ApiResponse(responseCode = "401", description = "User is not authorized", content = @Content)
+    @Operation(
+            summary = EXERCISE_CONTROLLER_DELETE_EXERCISE_OPERATION_SUMMARY,
+            description = EXERCISE_CONTROLLER_DELETE_EXERCISE_OPERATION_DESCRIPTION
+    )
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_NO_CONTENT,
+            description = EXERCISE_CONTROLLER_DELETE_EXERCISE_OK_DESCRIPTION,
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_UNAUTHORIZED,
+            description = RESPONSE_CODE_UNAUTHORIZED_DESCRIPTION,
+            content = @Content
+    )
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExercise(
             @Parameter(hidden = true) @RequestHeader(HttpHeaders.AUTHORIZATION) String token,

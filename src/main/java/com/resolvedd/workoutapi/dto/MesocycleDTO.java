@@ -9,32 +9,52 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
+import static com.resolvedd.workoutapi.constants.OpenApiConstants.*;
 import static com.resolvedd.workoutapi.constants.ValidationConstants.*;
 
 @Data
-@Schema(description = "Mesocycle transfer object representing a training block")
+@Schema(description = MESOCYCLE_SCHEMA_DESCRIPTION)
 public class MesocycleDTO {
 
-    @Schema(description = "Unique identifier of the mesocycle", example = "1", accessMode = Schema.AccessMode.READ_ONLY)
+    @Schema(
+            description = MESOCYCLE_SCHEMA_ID_DESCRIPTION,
+            accessMode = Schema.AccessMode.READ_ONLY
+    )
     private Long id;
 
     @NotBlank(message = MESOCYCLE_NAME_VALIDATION)
-    @Schema(description = "Name of the mesocycle training block", example = "Hypertrophy Block 1", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(
+            description = MESOCYCLE_SCHEMA_NAME_DESCRIPTION,
+            example = MESOCYCLE_SCHEMA_NAME_EXAMPLE,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private String name;
 
     @NotNull(message = MESOCYCLE_TARGET_WEEKS_VALIDATION)
     @Min(1)
-    @Schema(description = "Target duration in weeks", example = "4", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(
+            description = MESOCYCLE_SCHEMA_TARGET_WEEKS_DESCRIPTION,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private Integer targetWeeks;
 
-    @Schema(description = "Start date of the mesocycle", example = "2026-06-01")
+    @Schema(
+            description = MESOCYCLE_SCHEMA_START_DATE_DESCRIPTION,
+            example = MESOCYCLE_SCHEMA_START_DATE_EXAMPLE
+    )
     private LocalDate startDate;
 
-    @Schema(description = "End date of the mesocycle", example = "2026-06-28")
+    @Schema(
+            description = MESOCYCLE_SCHEMA_END_DATE_DESCRIPTION,
+            example = MESOCYCLE_SCHEMA_END_DATE_EXAMPLE
+    )
     private LocalDate endDate;
 
     @NotBlank(message = MESOCYCLE_STATUS_VALIDATION)
     @Pattern(regexp = "^[IAC]$", message = MESOCYCLE_STATUS_VALIDATION2)
-    @Schema(description = "Status of the mesocycle ('I' = Inactive, 'A' = Active, 'C' = Completed)", example = "A", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(
+            description = MESOCYCLE_SCHEMA_STATUS_DESCRIPTION,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private String status;
 }

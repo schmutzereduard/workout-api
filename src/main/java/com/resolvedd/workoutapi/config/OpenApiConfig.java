@@ -6,16 +6,22 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.context.annotation.Configuration;
 
+import static com.resolvedd.workoutapi.constants.OpenApiConstants.*;
+
 @Configuration
 @OpenAPIDefinition(
-    info = @Info(title = "Workout Management API", version = "1.0", description = "API documentation with mixed security")
+    info = @Info(
+            title = INFO_TITLE,
+            version = INFO_VERSION,
+            description = INFO_DESCRIPTION
+    )
 )
 @SecurityScheme(
-    name = "bearerAuth",
+    name = SECURITY_SCHEME_NAME,
     type = SecuritySchemeType.HTTP,
-    scheme = "bearer",
-    bearerFormat = "JWT",
-    description = "Enter the JWT bearer token"
+    scheme = SECURITY_SCHEME,
+    bearerFormat = SECURITY_SCHEME_FORMAT,
+    description = SECURITY_SCHEME_DESCRIPTION
 )
 public class OpenApiConfig {
 }

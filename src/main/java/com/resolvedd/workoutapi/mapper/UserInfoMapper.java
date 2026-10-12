@@ -1,7 +1,6 @@
 package com.resolvedd.workoutapi.mapper;
 
 import com.resolvedd.workoutapi.dto.UserInfoDTO;
-import com.resolvedd.workoutapi.model.MesocycleStatus;
 import com.resolvedd.workoutapi.model.UserGender;
 import com.resolvedd.workoutapi.model.UserInfo;
 import org.mapstruct.Mapper;

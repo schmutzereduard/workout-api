@@ -6,38 +6,56 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
+import static com.resolvedd.workoutapi.constants.OpenApiConstants.*;
 import static com.resolvedd.workoutapi.constants.ValidationConstants.*;
 
 @Data
-@Schema(description = "Template exercise transfer object linking an exercise to a workout template with target sets and reps")
+@Schema(description = TEMPLATE_EXERCISE_SCHEMA_DESCRIPTION)
 public class TemplateExerciseDTO {
 
-    @Schema(description = "Unique identifier of the template exercise", example = "1", accessMode = Schema.AccessMode.READ_ONLY)
+    @Schema(
+            description = TEMPLATE_EXERCISE_SCHEMA_ID_DESCRIPTION,
+            accessMode = Schema.AccessMode.READ_ONLY
+    )
     private Long id;
 
-    @Schema(description = "ID of the parent workout template", example = "5")
+    @Schema(description = TEMPLATE_EXERCISE_SCHEMA_WORKOUT_TEMPLATE_ID_DESCRIPTION)
     private Long workoutTemplateId;
 
-    @Schema(description = "ID of the associated exercise", example = "12")
+    @Schema(description = TEMPLATE_EXERCISE_SCHEMA_EXERCISE_ID_DESCRIPTION)
     private Long exerciseId;
 
     @NotNull(message = EXERCISE_ORDER_VALIDATION)
     @Positive(message = EXERCISE_ORDER_VALIDATION2)
-    @Schema(description = "Order sequence of the exercise in the template", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(
+            description = TEMPLATE_EXERCISE_SCHEMA_EXERCISE_ORDER_DESCRIPTION,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private Integer exerciseOrder;
 
     @NotNull(message = TARGET_SETS_VALIDATION)
     @Positive(message = TARGET_SETS_VALIDATION2)
-    @Schema(description = "Target number of sets", example = "3", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(
+            description = TEMPLATE_EXERCISE_SCHEMA_TARGET_SETS_DESCRIPTION,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private Integer targetSets;
 
     @NotNull(message = TARGET_REPETITIONS_MIN_VALIDATION)
     @Min(1)
-    @Schema(description = "Minimum target repetitions per set", example = "8", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(
+            description = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MIN_DESCRIPTION,
+            example = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MIN_EXAMPLE,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private Integer targetRepetitionsMin;
 
     @NotNull(message = TARGET_REPETITIONS_MAX_VALIDATION)
     @Positive(message = TARGET_REPETITIONS_MAX_VALIDATION2)
-    @Schema(description = "Maximum target repetitions per set", example = "12", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(
+            description = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MAX_DESCRIPTION,
+            example = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MAX_EXAMPLE,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private Integer targetRepetitionsMax;
 }

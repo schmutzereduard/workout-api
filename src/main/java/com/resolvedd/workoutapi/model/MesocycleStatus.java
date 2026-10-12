@@ -1,5 +1,8 @@
 package com.resolvedd.workoutapi.model;
 
+import lombok.Getter;
+
+@Getter
 public enum MesocycleStatus {
 
     INACTIVE("I"),
@@ -9,9 +12,5 @@ public enum MesocycleStatus {
     private final String value;
     MesocycleStatus(String value) {
         this.value = value;
-    }
-
-    public String getValue() {
-        return value;
     }
 }

@@ -1,5 +1,8 @@
 package com.resolvedd.workoutapi.model;
 
+import lombok.Getter;
+
+@Getter
 public enum UserGender {
 
     MALE("M"),
@@ -8,9 +11,5 @@ public enum UserGender {
     private final String value;
     UserGender(String value) {
         this.value = value;
-    }
-
-    public String getValue() {
-        return value;
     }
 }

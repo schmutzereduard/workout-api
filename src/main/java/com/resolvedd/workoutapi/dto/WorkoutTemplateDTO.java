@@ -8,27 +8,42 @@ import lombok.Data;
 
 import java.util.List;
 
+import static com.resolvedd.workoutapi.constants.OpenApiConstants.*;
 import static com.resolvedd.workoutapi.constants.ValidationConstants.*;
 
 @Data
-@Schema(description = "Workout template transfer object representing a planned workout routine within a mesocycle")
+@Schema(description = WORKOUT_TEMPLATE_SCHEMA_DESCRIPTION)
 public class WorkoutTemplateDTO {
 
-    @Schema(description = "Unique identifier of the workout template", example = "1", accessMode = Schema.AccessMode.READ_ONLY)
+    @Schema(
+            description = WORKOUT_TEMPLATE_SCHEMA_ID_DESCRIPTION,
+            accessMode = Schema.AccessMode.READ_ONLY
+    )
     private Long id;
 
-    @Schema(description = "ID of the parent mesocycle training block", example = "3")
+    @Schema(
+            description = WORKOUT_TEMPLATE_SCHEMA_MESOCYCLE_ID_DESCRIPTION
+    )
     private Long mesocycleId;
 
     @NotBlank(message = WORKOUT_NAME_VALIDATION)
-    @Schema(description = "Name of the workout template", example = "Leg Day A", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(
+            description = WORKOUT_TEMPLATE_SCHEMA_NAME_DESCRIPTION,
+            example = WORKOUT_TEMPLATE_SCHEMA_NAME_EXAMPLE,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private String name;
 
     @NotNull(message = WORKOUT_DAY_ORDER_VALIDATION)
     @Min(1)
-    @Schema(description = "Day order sequence within the mesocycle", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(
+            description = WORKOUT_TEMPLATE_SCHEMA_DAY_ORDER_DESCRIPTION,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private Integer dayOrder;
 
-    @Schema(description = "List of template exercises included in this routine")
+    @Schema(
+            description = WORKOUT_TEMPLATE_SCHEMA_TEMPLATE_EXERCISES_DESCRIPTION
+    )
     private List<TemplateExerciseDTO> templateExercises;
 }
