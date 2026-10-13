@@ -7,7 +7,6 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication
 @PropertySource("classpath:jdbc.properties")
 @PropertySource("classpath:auth.properties")
-@PropertySource("classpath:logging.properties")
 public class WorkoutApiApplication {
 
 	public static void main(String[] args) {
