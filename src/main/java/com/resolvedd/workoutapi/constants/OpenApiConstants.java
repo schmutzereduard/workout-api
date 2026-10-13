@@ -7,7 +7,10 @@ public class OpenApiConstants {
     public static final String RESPONSE_CODE_OK = "200";
     public static final String RESPONSE_CODE_CREATED = "201";
     public static final String RESPONSE_CODE_NO_CONTENT = "204";
+    public static final String RESPONSE_CODE_BAD_REQUEST = "400";
     public static final String RESPONSE_CODE_UNAUTHORIZED = "401";
+    public static final String RESPONSE_CODE_NOT_FOUND = "404";
+    public static final String RESPONSE_CODE_CONFLICT = "409";
     public static final String JSON_MEDIA_TYPE = "application/json";
     public static final String RESPONSE_CODE_UNAUTHORIZED_DESCRIPTION = "User is not authorized";
 
@@ -26,13 +29,13 @@ public class OpenApiConstants {
     public static final String EXERCISE_CONTROLLER_GET_EXERCISES_OPERATION_DESCRIPTION = "Retrieves a list of all exercises belonging to the authenticated user.";
     public static final String EXERCISE_CONTROLLER_GET_EXERCISES_OK_DESCRIPTION = "Successfully retrieved exercises list";
 
-    public static final String EXERCISE_CONTROLLER_PUT_EXERCISE_OPERATION_SUMMARY = "Update an exercise";
-    public static final String EXERCISE_CONTROLLER_PUT_EXERCISE_OPERATION_DESCRIPTION = "Updates an existing exercise for the authenticated user.";
-    public static final String EXERCISE_CONTROLLER_PUT_EXERCISE_OK_DESCRIPTION = "Exercise updated successfully";
+    public static final String EXERCISE_CONTROLLER_UPDATE_EXERCISE_OPERATION_SUMMARY = "Update an exercise";
+    public static final String EXERCISE_CONTROLLER_UPDATE_EXERCISE_OPERATION_DESCRIPTION = "Updates an existing exercise for the authenticated user.";
+    public static final String EXERCISE_CONTROLLER_UPDATE_EXERCISE_OK_DESCRIPTION = "Exercise updated successfully";
 
-    public static final String EXERCISE_CONTROLLER_POST_EXERCISE_OPERATION_SUMMARY = "Create a new exercise";
-    public static final String EXERCISE_CONTROLLER_POST_EXERCISE_OPERATION_DESCRIPTION = "Registers a new exercise for the authenticated user.";
-    public static final String EXERCISE_CONTROLLER_POST_EXERCISE_OK_DESCRIPTION = "Exercise created successfully";
+    public static final String EXERCISE_CONTROLLER_CREATE_EXERCISE_OPERATION_SUMMARY = "Create a new exercise";
+    public static final String EXERCISE_CONTROLLER_CREATE_EXERCISE_OPERATION_DESCRIPTION = "Registers a new exercise for the authenticated user.";
+    public static final String EXERCISE_CONTROLLER_CREATE_EXERCISE_OK_DESCRIPTION = "Exercise created successfully";
 
     public static final String EXERCISE_CONTROLLER_DELETE_EXERCISES_OPERATION_SUMMARY = "Delete multiple exercises";
     public static final String EXERCISE_CONTROLLER_DELETE_EXERCISES_OPERATION_DESCRIPTION = "Deletes a batch of exercises by their IDs.";
@@ -49,13 +52,24 @@ public class OpenApiConstants {
     public static final String MESOCYCLE_CONTROLLER_GET_MESOCYCLES_OPERATION_DESCRIPTION = "Retrieves a list of all training mesocycles belonging to the authenticated user.";
     public static final String MESOCYCLE_CONTROLLER_GET_MESOCYCLES_OK_DESCRIPTION = "Successfully retrieved list";
 
-    public static final String MESOCYCLE_CONTROLLER_PUT_MESOCYCLE_OPERATION_SUMMARY = "Update a mesocycle";
-    public static final String MESOCYCLE_CONTROLLER_PUT_MESOCYCLE_OPERATION_DESCRIPTION = "Updates an existing training mesocycle for the authenticated user.";
-    public static final String MESOCYCLE_CONTROLLER_PUT_MESOCYCLE_OK_DESCRIPTION = "Mesocycle updated successfully";
+    public static final String MESOCYCLE_CONTROLLER_START_MESOCYCLE_OPERATION_SUMMARY = "Start a mesocycle";
+    public static final String MESOCYCLE_CONTROLLER_START_MESOCYCLE_OPERATION_DESCRIPTION = "Updated an Inactive mesocycle to Active status";
+    public static final String MESOCYCLE_CONTROLLER_START_MESOCYCLE_OK_DESCRIPTION = "Successfully started the mesocycle";
+    public static final String MESOCYCLE_CONTROLLER_START_MESOCYCLE_BAD_DESCRIPTION = "There is already an Active mesocycle / Selected mesocycle is already Completed";
+    public static final String MESOCYCLE_CONTROLLER_MESOCYCLE_NOT_FOUND_DESCRIPTION = "Mesocycle not found";
 
-    public static final String MESOCYCLE_CONTROLLER_POST_MESOCYCLE_OPERATION_SUMMARY = "Create a new mesocycle";
-    public static final String MESOCYCLE_CONTROLLER_POST_MESOCYCLE_OPERATION_DESCRIPTION = "Registers a new training mesocycle for the authenticated user.";
-    public static final String MESOCYCLE_CONTROLLER_POST_MESOCYCLE_OK_DESCRIPTION = "Mesocycle created successfully";
+    public static final String MESOCYCLE_CONTROLLER_END_MESOCYCLE_OPERATION_SUMMARY = "Complete a mesocycle";
+    public static final String MESOCYCLE_CONTROLLER_END_MESOCYCLE_OPERATION_DESCRIPTION = "Updated an Active mesocycle to Inactive status";
+    public static final String MESOCYCLE_CONTROLLER_END_MESOCYCLE_OK_DESCRIPTION = "Successfully completed the mesocycle";
+    public static final String MESOCYCLE_CONTROLLER_END_MESOCYCLE_BAD_DESCRIPTION = "Selected mesocycle is already Completed / Selected mesocycle is not Active yet";
+
+    public static final String MESOCYCLE_CONTROLLER_UPDATE_MESOCYCLE_OPERATION_SUMMARY = "Update a mesocycle";
+    public static final String MESOCYCLE_CONTROLLER_UPDATE_MESOCYCLE_OPERATION_DESCRIPTION = "Updates an existing training mesocycle for the authenticated user.";
+    public static final String MESOCYCLE_CONTROLLER_UPDATE_MESOCYCLE_OK_DESCRIPTION = "Mesocycle updated successfully";
+
+    public static final String MESOCYCLE_CONTROLLER_CREATE_MESOCYCLE_OPERATION_SUMMARY = "Create a new mesocycle";
+    public static final String MESOCYCLE_CONTROLLER_CREATE_MESOCYCLE_OPERATION_DESCRIPTION = "Registers a new training mesocycle for the authenticated user.";
+    public static final String MESOCYCLE_CONTROLLER_CREATE_MESOCYCLE_OK_DESCRIPTION = "Mesocycle created successfully";
 
     public static final String MESOCYCLE_CONTROLLER_DELETE_MESOCYCLES_OPERATION_SUMMARY = "Delete multiple mesocycles";
     public static final String MESOCYCLE_CONTROLLER_DELETE_MESOCYCLES_OPERATION_DESCRIPTION = "Deletes a batch of training mesocycles by their IDs.";
@@ -69,16 +83,16 @@ public class OpenApiConstants {
     public static final String TEMPLATE_EXERCISE_CONTROLLER_TAG_DESCRIPTION = "Endpoints for managing template exercises";
 
     public static final String TEMPLATE_EXERCISE_CONTROLLER_GET_TEMPLATE_EXERCISES_OPERATION_SUMMARY = "Get all template exercises";
-    public static final String TEMPLATE_EXERCISE_CONTROLLER_GET_TEMPLATE_EXERCISES_OPERATION_DESCRIPTION = "Retrieves a list of all template exercises.";
+    public static final String TEMPLATE_EXERCISE_CONTROLLER_GET_TEMPLATE_EXERCISES_OPERATION_DESCRIPTION = "Retrieves a list of all template exercises belonging to a mesocycle.";
     public static final String TEMPLATE_EXERCISE_CONTROLLER_GET_TEMPLATE_EXERCISES_OK_DESCRIPTION = "Successfully retrieved list";
 
-    public static final String TEMPLATE_EXERCISE_CONTROLLER_PUT_TEMPLATE_EXERCISE_OPERATION_SUMMARY = "Update a template exercise";
-    public static final String TEMPLATE_EXERCISE_CONTROLLER_PUT_TEMPLATE_EXERCISE_OPERATION_DESCRIPTION = "Updates an existing template exercise.";
-    public static final String TEMPLATE_EXERCISE_CONTROLLER_PUT_TEMPLATE_EXERCISE_OK_DESCRIPTION = "Template exercise updated successfully";
+    public static final String TEMPLATE_EXERCISE_CONTROLLER_UPDATE_TEMPLATE_EXERCISE_OPERATION_SUMMARY = "Update a template exercise";
+    public static final String TEMPLATE_EXERCISE_CONTROLLER_UPDATE_TEMPLATE_EXERCISE_OPERATION_DESCRIPTION = "Updates an existing template exercise.";
+    public static final String TEMPLATE_EXERCISE_CONTROLLER_UPDATE_TEMPLATE_EXERCISE_OK_DESCRIPTION = "Template exercise updated successfully";
 
-    public static final String TEMPLATE_EXERCISE_CONTROLLER_POST_TEMPLATE_EXERCISE_OPERATION_SUMMARY = "Create a new template exercise";
-    public static final String TEMPLATE_EXERCISE_CONTROLLER_POST_TEMPLATE_EXERCISE_OPERATION_DESCRIPTION = "Registers a new template exercise.";
-    public static final String TEMPLATE_EXERCISE_CONTROLLER_POST_TEMPLATE_EXERCISE_OK_DESCRIPTION = "Template exercise created successfully";
+    public static final String TEMPLATE_EXERCISE_CONTROLLER_CREATE_TEMPLATE_EXERCISE_OPERATION_SUMMARY = "Create a new template exercise";
+    public static final String TEMPLATE_EXERCISE_CONTROLLER_CREATE_TEMPLATE_EXERCISE_OPERATION_DESCRIPTION = "Registers a new template exercise.";
+    public static final String TEMPLATE_EXERCISE_CONTROLLER_CREATE_TEMPLATE_EXERCISE_OK_DESCRIPTION = "Template exercise created successfully";
 
     public static final String TEMPLATE_EXERCISE_CONTROLLER_DELETE_TEMPLATE_EXERCISES_OPERATION_SUMMARY = "Delete multiple template exercises";
     public static final String TEMPLATE_EXERCISE_CONTROLLER_DELETE_TEMPLATE_EXERCISES_OPERATION_DESCRIPTION = "Deletes a batch of template exercises by their IDs.";
@@ -95,13 +109,13 @@ public class OpenApiConstants {
     public static final String WORKOUT_CONTROLLER_GET_WORKOUTS_OPERATION_DESCRIPTION = "Retrieves a list of all workouts belonging to the authenticated user.";
     public static final String WORKOUT_CONTROLLER_GET_WORKOUTS_OK_DESCRIPTION = "Successfully retrieved list";
 
-    public static final String WORKOUT_CONTROLLER_PUT_WORKOUT_OPERATION_SUMMARY = "Create a new workout";
-    public static final String WORKOUT_CONTROLLER_PUT_WORKOUT_OPERATION_DESCRIPTION = "Registers a new workout for the authenticated user.";
-    public static final String WORKOUT_CONTROLLER_PUT_WORKOUT_OK_DESCRIPTION = "Workout created successfully";
+    public static final String WORKOUT_CONTROLLER_UPDATE_WORKOUT_OPERATION_SUMMARY = "Create a new workout";
+    public static final String WORKOUT_CONTROLLER_UPDATE_WORKOUT_OPERATION_DESCRIPTION = "Registers a new workout for the authenticated user.";
+    public static final String WORKOUT_CONTROLLER_UPDATE_WORKOUT_OK_DESCRIPTION = "Workout created successfully";
 
-    public static final String WORKOUT_CONTROLLER_POST_WORKOUT_OPERATION_SUMMARY = "Update a workout";
-    public static final String WORKOUT_CONTROLLER_POST_WORKOUT_OPERATION_DESCRIPTION = "Updates an existing workout for the authenticated user.";
-    public static final String WORKOUT_CONTROLLER_POST_WORKOUT_OK_DESCRIPTION = "Workout updated successfully";
+    public static final String WORKOUT_CONTROLLER_CREATE_WORKOUT_OPERATION_SUMMARY = "Update a workout";
+    public static final String WORKOUT_CONTROLLER_CREATE_WORKOUT_OPERATION_DESCRIPTION = "Updates an existing workout for the authenticated user.";
+    public static final String WORKOUT_CONTROLLER_CREATE_WORKOUT_OK_DESCRIPTION = "Workout updated successfully";
 
     public static final String WORKOUT_CONTROLLER_DELETE_WORKOUTS_OPERATION_SUMMARY = "Delete multiple workouts";
     public static final String WORKOUT_CONTROLLER_DELETE_WORKOUTS_OPERATION_DESCRIPTION = "Deletes a batch of workouts by their IDs.";
@@ -118,13 +132,13 @@ public class OpenApiConstants {
     public static final String WORKOUT_TEMPLATE_CONTROLLER_GET_WORKOUT_TEMPLATES_OPERATION_DESCRIPTION = "Retrieves a list of all workout templates belonging to a mesocycle.";
     public static final String WORKOUT_TEMPLATE_CONTROLLER_GET_WORKOUT_TEMPLATES_OK_DESCRIPTION = "Successfully retrieved list";
 
-    public static final String WORKOUT_TEMPLATE_CONTROLLER_PUT_WORKOUT_TEMPLATE_OPERATION_SUMMARY = "Update a workout template";
-    public static final String WORKOUT_TEMPLATE_CONTROLLER_PUT_WORKOUT_TEMPLATE_OPERATION_DESCRIPTION = "Updates an existing workout template for the authenticated user.";
-    public static final String WORKOUT_TEMPLATE_CONTROLLER_PUT_WORKOUT_TEMPLATE_OK_DESCRIPTION = "Workout template updated successfully";
+    public static final String WORKOUT_TEMPLATE_CONTROLLER_UPDATE_WORKOUT_TEMPLATE_OPERATION_SUMMARY = "Update a workout template";
+    public static final String WORKOUT_TEMPLATE_CONTROLLER_UPDATE_WORKOUT_TEMPLATE_OPERATION_DESCRIPTION = "Updates an existing workout template for the authenticated user.";
+    public static final String WORKOUT_TEMPLATE_CONTROLLER_UPDATE_WORKOUT_TEMPLATE_OK_DESCRIPTION = "Workout template updated successfully";
 
-    public static final String WORKOUT_TEMPLATE_CONTROLLER_POST_WORKOUT_TEMPLATE_OPERATION_SUMMARY = "Create a new workout template";
-    public static final String WORKOUT_TEMPLATE_CONTROLLER_POST_WORKOUT_TEMPLATE_OPERATION_DESCRIPTION = "Registers a new workout template for the authenticated user.";
-    public static final String WORKOUT_TEMPLATE_CONTROLLER_POST_WORKOUT_TEMPLATE_OK_DESCRIPTION = "Workout template created successfully";
+    public static final String WORKOUT_TEMPLATE_CONTROLLER_CREATE_WORKOUT_TEMPLATE_OPERATION_SUMMARY = "Create a new workout template";
+    public static final String WORKOUT_TEMPLATE_CONTROLLER_CREATE_WORKOUT_TEMPLATE_OPERATION_DESCRIPTION = "Registers a new workout template for the authenticated user.";
+    public static final String WORKOUT_TEMPLATE_CONTROLLER_CREATE_WORKOUT_TEMPLATE_OK_DESCRIPTION = "Workout template created successfully";
 
     public static final String WORKOUT_TEMPLATE_CONTROLLER_DELETE_WORKOUT_TEMPLATES_OPERATION_SUMMARY = "Delete multiple workout templates";
     public static final String WORKOUT_TEMPLATE_CONTROLLER_DELETE_WORKOUT_TEMPLATES_OPERATION_DESCRIPTION = "Deletes a batch of workout templates by their IDs.";
@@ -133,6 +147,8 @@ public class OpenApiConstants {
     public static final String WORKOUT_TEMPLATE_CONTROLLER_DELETE_WORKOUT_TEMPLATE_OPERATION_SUMMARY = "Delete a workout template by ID";
     public static final String WORKOUT_TEMPLATE_CONTROLLER_DELETE_WORKOUT_TEMPLATE_OPERATION_DESCRIPTION = "Deletes a specific workout template using its unique identifier.";
     public static final String WORKOUT_TEMPLATE_CONTROLLER_DELETE_WORKOUT_TEMPLATE_OK_DESCRIPTION = "Workout template deleted successfully";
+
+    public static final String WORKOUT_TEMPLATE_CONTROLLER_DUPLICATE_DESCRIPTION = "A workout template already exists for this specific day and week within the mesocycle.";
 
     public static final String EXERCISE_DTO_SCHEMA_DESCRIPTION = "Exercise transfer object";
     public static final String EXERCISE_DTO_SCHEMA_ID_DESCRIPTION = "Unique exercise identifier";
@@ -208,5 +224,7 @@ public class OpenApiConstants {
     public static final String WORKOUT_TEMPLATE_SCHEMA_NAME_DESCRIPTION = "Name of the workout template";
     public static final String WORKOUT_TEMPLATE_SCHEMA_NAME_EXAMPLE = "Leg Day A";
     public static final String WORKOUT_TEMPLATE_SCHEMA_DAY_ORDER_DESCRIPTION = "Day order sequence within the mesocycle";
+    public static final String WORKOUT_TEMPLATE_SCHEMA_WEEK_NUMBER_DESCRIPTION = "Week number sequence within the mesocycle";
     public static final String WORKOUT_TEMPLATE_SCHEMA_TEMPLATE_EXERCISES_DESCRIPTION = "List of template exercises included in this routine";
+    public static final String MESOCYCLE_SCHEMA_WORKOUT_TEMPLATES_DESCRIPTION = "List of workout templates included in this mesocycle";
 }

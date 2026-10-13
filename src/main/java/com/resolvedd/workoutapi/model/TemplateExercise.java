@@ -5,7 +5,14 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "template_exercise")
+@Table(
+        name = "template_exercise",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "template_order_in_workout",
+                        columnNames = {"template_id", "order_in_workout"}
+                )
+        })
 public class TemplateExercise {
 
     @Id

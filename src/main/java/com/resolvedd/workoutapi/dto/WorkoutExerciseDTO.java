@@ -43,5 +43,5 @@ public class WorkoutExerciseDTO {
     @Schema(
             description = WORKOUT_EXERCISE_SCHEMA_SETS_DESCRIPTION
     )
-    private List<ExerciseSetDTO> sets;
+    private List<ExerciseSetDTO> exerciseSets;
 }

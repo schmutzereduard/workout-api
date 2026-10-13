@@ -8,7 +8,14 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "workout_template")
+@Table(
+        name = "workout_template",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "mesocycle_day_order_in_week",
+                        columnNames = {"mesocycle_id", "day_order", "week_number"}
+                )
+        })
 public class WorkoutTemplate {
 
     @Id
@@ -20,6 +27,9 @@ public class WorkoutTemplate {
 
     @Column(name = "day_order", nullable = false)
     private Integer dayOrder;
+
+    @Column(name = "week_number", nullable = false)
+    private Integer weekNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mesocycle_id", nullable = false)

@@ -13,8 +13,8 @@ import java.util.List;
         name = "workout_exercise",
         uniqueConstraints = {
                 @UniqueConstraint(
-                        name = "uk_workout_exercise_order",
-                        columnNames = {"workout_id", "exercise_id", "order_in_workout"}
+                        name = "workout_exercise_order",
+                        columnNames = {"workout_id", "order_in_workout"}
                 )
         }
 )
@@ -25,24 +25,20 @@ public class WorkoutExercise {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "workout_id")
+    @JoinColumn(name = "workout_id", nullable = false)
     private Workout workout;
 
     @ManyToOne
-    @JoinColumn(name = "exercise_id")
+    @JoinColumn(name = "exercise_id", nullable = false)
     private Exercise exercise;
 
-    @Column(name = "order_in_workout", unique = true, nullable = false)
-    private int order_in_workout;
+    @Column(name = "order_in_workout", nullable = false)
+    private Integer orderInWorkout;
 
     @Column(name = "notes")
     private String notes;
 
-    @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ExerciseSet> sets = new ArrayList<>();
+    @OneToMany(mappedBy = "workoutExercise", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ExerciseSet> exerciseSets = new ArrayList<>();
 
-    public void addSet(ExerciseSet set) {
-        sets.add(set);
-        set.setExercise(this);
-    }
 }

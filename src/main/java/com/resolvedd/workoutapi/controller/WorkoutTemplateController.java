@@ -60,12 +60,12 @@ public class WorkoutTemplateController {
     }
 
     @Operation(
-            summary = WORKOUT_TEMPLATE_CONTROLLER_PUT_WORKOUT_TEMPLATE_OPERATION_SUMMARY,
-            description = WORKOUT_TEMPLATE_CONTROLLER_PUT_WORKOUT_TEMPLATE_OPERATION_DESCRIPTION
+            summary = WORKOUT_TEMPLATE_CONTROLLER_UPDATE_WORKOUT_TEMPLATE_OPERATION_SUMMARY,
+            description = WORKOUT_TEMPLATE_CONTROLLER_UPDATE_WORKOUT_TEMPLATE_OPERATION_DESCRIPTION
     )
     @ApiResponse(
             responseCode = RESPONSE_CODE_OK,
-            description = WORKOUT_TEMPLATE_CONTROLLER_PUT_WORKOUT_TEMPLATE_OK_DESCRIPTION,
+            description = WORKOUT_TEMPLATE_CONTROLLER_UPDATE_WORKOUT_TEMPLATE_OK_DESCRIPTION,
             content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = WorkoutTemplateDTO.class))
     )
     @ApiResponse(
@@ -83,17 +83,27 @@ public class WorkoutTemplateController {
     }
 
     @Operation(
-            summary = WORKOUT_TEMPLATE_CONTROLLER_POST_WORKOUT_TEMPLATE_OPERATION_SUMMARY,
-            description = WORKOUT_TEMPLATE_CONTROLLER_POST_WORKOUT_TEMPLATE_OPERATION_DESCRIPTION
+            summary = WORKOUT_TEMPLATE_CONTROLLER_CREATE_WORKOUT_TEMPLATE_OPERATION_SUMMARY,
+            description = WORKOUT_TEMPLATE_CONTROLLER_CREATE_WORKOUT_TEMPLATE_OPERATION_DESCRIPTION
     )
     @ApiResponse(
             responseCode = RESPONSE_CODE_CREATED,
-            description = WORKOUT_TEMPLATE_CONTROLLER_POST_WORKOUT_TEMPLATE_OK_DESCRIPTION,
+            description = WORKOUT_TEMPLATE_CONTROLLER_CREATE_WORKOUT_TEMPLATE_OK_DESCRIPTION,
             content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = WorkoutTemplateDTO.class))
     )
     @ApiResponse(
             responseCode = RESPONSE_CODE_UNAUTHORIZED,
             description = RESPONSE_CODE_UNAUTHORIZED_DESCRIPTION,
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_NOT_FOUND,
+            description = MESOCYCLE_CONTROLLER_MESOCYCLE_NOT_FOUND_DESCRIPTION,
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = RESPONSE_CODE_CONFLICT,
+            description = WORKOUT_TEMPLATE_CONTROLLER_DUPLICATE_DESCRIPTION,
             content = @Content
     )
     @PostMapping

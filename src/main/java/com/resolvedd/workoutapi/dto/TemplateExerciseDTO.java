@@ -19,10 +19,16 @@ public class TemplateExerciseDTO {
     )
     private Long id;
 
-    @Schema(description = TEMPLATE_EXERCISE_SCHEMA_WORKOUT_TEMPLATE_ID_DESCRIPTION)
+    @Schema(
+            description = TEMPLATE_EXERCISE_SCHEMA_WORKOUT_TEMPLATE_ID_DESCRIPTION,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private Long workoutTemplateId;
 
-    @Schema(description = TEMPLATE_EXERCISE_SCHEMA_EXERCISE_ID_DESCRIPTION)
+    @Schema(
+            description = TEMPLATE_EXERCISE_SCHEMA_EXERCISE_ID_DESCRIPTION,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
     private Long exerciseId;
 
     @NotNull(message = EXERCISE_ORDER_VALIDATION)

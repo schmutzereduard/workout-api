@@ -32,6 +32,7 @@ public class ValidationConstants {
     public static final String MESOCYCLE_STATUS_VALIDATION = "Mesocycle status is required!";
     public static final String MESOCYCLE_STATUS_VALIDATION2 = "Mesocycle status must be either I, A or C!";
     public static final String WORKOUT_DAY_ORDER_VALIDATION = "Workout day order is required!";
+    public static final String WORKOUT_WEEK_NUMBER_VALIDATION =  "Workout week number is required!";
     public static final String EXERCISE_ORDER_VALIDATION =  "Exercise order number is required!";
     public static final String EXERCISE_ORDER_VALIDATION2 =  "Exercise order must be a positive number!";
     public static final String TARGET_SETS_VALIDATION =  "Target Sets is required!";

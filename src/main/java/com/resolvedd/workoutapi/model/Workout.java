@@ -16,7 +16,7 @@ public class Workout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name ="name", unique = true , nullable = false)
+    @Column(name ="name", nullable = false)
     private String name;
 
     @Column(name = "date", nullable = false)
@@ -28,11 +28,11 @@ public class Workout {
     @Column(name = "notes")
     private String notes;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "workout_template_id")
+    private WorkoutTemplate workoutTemplate;
+
     @OneToMany(mappedBy = "workout", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WorkoutExercise> exercises = new ArrayList<>();
 
-    public void addWorkoutExercise(WorkoutExercise workoutExercise) {
-        exercises.add(workoutExercise);
-        workoutExercise.setWorkout(this);
-    }
 }

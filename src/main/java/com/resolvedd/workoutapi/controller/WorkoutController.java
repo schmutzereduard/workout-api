@@ -57,12 +57,12 @@ public class WorkoutController {
     }
 
     @Operation(
-            summary = WORKOUT_CONTROLLER_PUT_WORKOUT_OPERATION_SUMMARY,
-            description = WORKOUT_CONTROLLER_PUT_WORKOUT_OPERATION_DESCRIPTION
+            summary = WORKOUT_CONTROLLER_UPDATE_WORKOUT_OPERATION_SUMMARY,
+            description = WORKOUT_CONTROLLER_UPDATE_WORKOUT_OPERATION_DESCRIPTION
     )
     @ApiResponse(
             responseCode = RESPONSE_CODE_CREATED,
-            description = WORKOUT_CONTROLLER_PUT_WORKOUT_OK_DESCRIPTION,
+            description = WORKOUT_CONTROLLER_UPDATE_WORKOUT_OK_DESCRIPTION,
             content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = WorkoutDTO.class))
     )
     @ApiResponse(
@@ -80,12 +80,12 @@ public class WorkoutController {
     }
 
     @Operation(
-            summary = WORKOUT_CONTROLLER_POST_WORKOUT_OPERATION_SUMMARY,
-            description = WORKOUT_CONTROLLER_POST_WORKOUT_OPERATION_DESCRIPTION
+            summary = WORKOUT_CONTROLLER_CREATE_WORKOUT_OPERATION_SUMMARY,
+            description = WORKOUT_CONTROLLER_CREATE_WORKOUT_OPERATION_DESCRIPTION
     )
     @ApiResponse(
             responseCode = RESPONSE_CODE_OK,
-            description = WORKOUT_CONTROLLER_POST_WORKOUT_OK_DESCRIPTION,
+            description = WORKOUT_CONTROLLER_CREATE_WORKOUT_OK_DESCRIPTION,
             content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = WorkoutDTO.class))
     )
     @ApiResponse(

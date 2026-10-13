@@ -10,7 +10,7 @@ import org.mapstruct.Mapping;
 import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_MESOCYCLE_STATUS_EXCEPTION_MESSAGE_FORMAT;
 import static com.resolvedd.workoutapi.constants.WorkoutConstants.*;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {WorkoutTemplateMapper.class})
 public interface MesocycleMapper {
 
     @Mapping(target = "status", expression = "java(mapStatusToString(mesocycle.getStatus()))")

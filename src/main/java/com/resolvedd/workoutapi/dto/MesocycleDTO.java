@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static com.resolvedd.workoutapi.constants.OpenApiConstants.*;
 import static com.resolvedd.workoutapi.constants.ValidationConstants.*;
@@ -57,4 +58,9 @@ public class MesocycleDTO {
             requiredMode = Schema.RequiredMode.REQUIRED
     )
     private String status;
+
+    @Schema(
+            description = MESOCYCLE_SCHEMA_WORKOUT_TEMPLATES_DESCRIPTION
+    )
+    private List<WorkoutTemplateDTO> workoutTemplates;
 }

@@ -1,6 +1,7 @@
 package com.resolvedd.workoutapi.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -37,6 +38,24 @@ public class ExerciseSetDTO {
             requiredMode = Schema.RequiredMode.REQUIRED
     )
     private BigDecimal weight;
+
+    @NotNull(message = TARGET_REPETITIONS_MIN_VALIDATION)
+    @Min(1)
+    @Schema(
+            description = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MIN_DESCRIPTION,
+            example = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MIN_EXAMPLE,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
+    private Integer targetRepetitionsMin;
+
+    @NotNull(message = TARGET_REPETITIONS_MAX_VALIDATION)
+    @Positive(message = TARGET_REPETITIONS_MAX_VALIDATION2)
+    @Schema(
+            description = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MAX_DESCRIPTION,
+            example = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MAX_EXAMPLE,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
+    private Integer targetRepetitionsMax;
 
     @NotNull(message = EXERCISE_SET_ACTUAL_REP_VALIDATION)
     @PositiveOrZero(message = EXERCISE_SET_ACTUAL_REP_VALIDATION2)

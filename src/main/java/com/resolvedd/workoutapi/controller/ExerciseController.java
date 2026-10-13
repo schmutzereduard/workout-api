@@ -59,12 +59,12 @@ public class ExerciseController {
     }
 
     @Operation(
-            summary = EXERCISE_CONTROLLER_PUT_EXERCISE_OPERATION_SUMMARY,
-            description = EXERCISE_CONTROLLER_PUT_EXERCISE_OPERATION_DESCRIPTION
+            summary = EXERCISE_CONTROLLER_UPDATE_EXERCISE_OPERATION_SUMMARY,
+            description = EXERCISE_CONTROLLER_UPDATE_EXERCISE_OPERATION_DESCRIPTION
     )
     @ApiResponse(
             responseCode = RESPONSE_CODE_OK,
-            description = EXERCISE_CONTROLLER_PUT_EXERCISE_OK_DESCRIPTION,
+            description = EXERCISE_CONTROLLER_UPDATE_EXERCISE_OK_DESCRIPTION,
             content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = ExerciseDTO.class)))
     @ApiResponse(
             responseCode = RESPONSE_CODE_UNAUTHORIZED,
@@ -81,12 +81,12 @@ public class ExerciseController {
     }
 
     @Operation(
-            summary = EXERCISE_CONTROLLER_POST_EXERCISE_OPERATION_SUMMARY,
-            description = EXERCISE_CONTROLLER_POST_EXERCISE_OPERATION_DESCRIPTION
+            summary = EXERCISE_CONTROLLER_CREATE_EXERCISE_OPERATION_SUMMARY,
+            description = EXERCISE_CONTROLLER_CREATE_EXERCISE_OPERATION_DESCRIPTION
     )
     @ApiResponse(
             responseCode = RESPONSE_CODE_CREATED,
-            description = EXERCISE_CONTROLLER_POST_EXERCISE_OK_DESCRIPTION,
+            description = EXERCISE_CONTROLLER_CREATE_EXERCISE_OK_DESCRIPTION,
             content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = ExerciseDTO.class))
     )
     @ApiResponse(

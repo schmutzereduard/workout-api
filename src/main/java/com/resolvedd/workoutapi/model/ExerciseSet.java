@@ -11,7 +11,7 @@ import java.math.BigDecimal;
         name = "exercise_set",
         uniqueConstraints = {
                 @UniqueConstraint(
-                        name = "uk_exercise_set_number",
+                        name = "exercise_set_number",
                         columnNames = {"workout_exercise_id", "set_number"}
                 )
         }
@@ -28,10 +28,16 @@ public class ExerciseSet {
     @Column(name = "weight", precision = 5, scale = 2, nullable = false)
     private BigDecimal weight;
 
+    @Column(name = "target_repetitions_min", nullable = false)
+    private Integer targetRepetitionsMin;
+
+    @Column(name = "target_repetitions_max", nullable = false)
+    private Integer targetRepetitionsMax;
+
     @Column(name = "actual_repetitions", nullable = false)
     private int actualRepetitions;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "workout_exercise_id")
-    private WorkoutExercise exercise;
+    private WorkoutExercise workoutExercise;
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -31,4 +33,7 @@ public class Mesocycle {
 
     @Column(name = "status", nullable = false)
     private MesocycleStatus status = MesocycleStatus.INACTIVE;
+
+    @OneToMany(mappedBy = "mesocycle", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
 }

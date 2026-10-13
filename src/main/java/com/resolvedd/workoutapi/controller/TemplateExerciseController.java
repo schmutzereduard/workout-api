@@ -50,20 +50,21 @@ public class TemplateExerciseController {
             description = RESPONSE_CODE_UNAUTHORIZED_DESCRIPTION,
             content = @Content
     )
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<List<TemplateExerciseDTO>> getTemplateExercises(
-            @Parameter(hidden = true) @RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
+            @Parameter(hidden = true) @RequestHeader(HttpHeaders.AUTHORIZATION) String token,
+            @PathVariable Long id) {
         authService.isAuthorized(token);
-        return ResponseEntity.ok(templateExerciseService.findAll());
+        return ResponseEntity.ok(templateExerciseService.findAllByTemplateId(id));
     }
 
     @Operation(
-            summary = TEMPLATE_EXERCISE_CONTROLLER_PUT_TEMPLATE_EXERCISE_OPERATION_SUMMARY,
-            description = TEMPLATE_EXERCISE_CONTROLLER_PUT_TEMPLATE_EXERCISE_OPERATION_DESCRIPTION
+            summary = TEMPLATE_EXERCISE_CONTROLLER_UPDATE_TEMPLATE_EXERCISE_OPERATION_SUMMARY,
+            description = TEMPLATE_EXERCISE_CONTROLLER_UPDATE_TEMPLATE_EXERCISE_OPERATION_DESCRIPTION
     )
     @ApiResponse(
             responseCode = RESPONSE_CODE_OK,
-            description = TEMPLATE_EXERCISE_CONTROLLER_PUT_TEMPLATE_EXERCISE_OK_DESCRIPTION,
+            description = TEMPLATE_EXERCISE_CONTROLLER_UPDATE_TEMPLATE_EXERCISE_OK_DESCRIPTION,
             content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = TemplateExerciseDTO.class))
     )
     @ApiResponse(
@@ -81,12 +82,12 @@ public class TemplateExerciseController {
     }
 
     @Operation(
-            summary = TEMPLATE_EXERCISE_CONTROLLER_POST_TEMPLATE_EXERCISE_OPERATION_SUMMARY,
-            description = TEMPLATE_EXERCISE_CONTROLLER_POST_TEMPLATE_EXERCISE_OPERATION_DESCRIPTION
+            summary = TEMPLATE_EXERCISE_CONTROLLER_CREATE_TEMPLATE_EXERCISE_OPERATION_SUMMARY,
+            description = TEMPLATE_EXERCISE_CONTROLLER_CREATE_TEMPLATE_EXERCISE_OPERATION_DESCRIPTION
     )
     @ApiResponse(
             responseCode = RESPONSE_CODE_CREATED,
-            description = TEMPLATE_EXERCISE_CONTROLLER_POST_TEMPLATE_EXERCISE_OK_DESCRIPTION,
+            description = TEMPLATE_EXERCISE_CONTROLLER_CREATE_TEMPLATE_EXERCISE_OK_DESCRIPTION,
             content = @Content(mediaType = JSON_MEDIA_TYPE, schema = @Schema(implementation = TemplateExerciseDTO.class))
     )
     @ApiResponse(

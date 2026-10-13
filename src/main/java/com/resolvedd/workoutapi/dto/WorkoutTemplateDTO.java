@@ -42,6 +42,14 @@ public class WorkoutTemplateDTO {
     )
     private Integer dayOrder;
 
+    @NotNull(message = WORKOUT_WEEK_NUMBER_VALIDATION)
+    @Min(1)
+    @Schema(
+            description = WORKOUT_TEMPLATE_SCHEMA_WEEK_NUMBER_DESCRIPTION,
+            requiredMode = Schema.RequiredMode.REQUIRED
+    )
+    private Integer weekNumber;
+
     @Schema(
             description = WORKOUT_TEMPLATE_SCHEMA_TEMPLATE_EXERCISES_DESCRIPTION
     )

@@ -26,8 +26,8 @@ public class TemplateExerciseService {
     private final TemplateExerciseRepository templateExerciseRepository;
     private final TemplateExerciseMapper templateExerciseMapper;
 
-    public List<TemplateExerciseDTO> findAll() {
-        return templateExerciseRepository.findAll().stream()
+    public List<TemplateExerciseDTO> findAllByTemplateId(Long templateId) {
+        return templateExerciseRepository.findAllByWorkoutTemplateId(templateId).stream()
                 .map(templateExerciseMapper::toDTO)
                 .toList();
     }
