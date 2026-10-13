@@ -6,6 +6,8 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT;
+import static com.resolvedd.workoutapi.constants.WorkoutConstants.GENDER_FEMALE;
+import static com.resolvedd.workoutapi.constants.WorkoutConstants.GENDER_MALE;
 
 @Converter(autoApply = true)
 public class UserGenderConverter implements AttributeConverter<UserGender, String> {
@@ -20,8 +22,8 @@ public class UserGenderConverter implements AttributeConverter<UserGender, Strin
     public UserGender convertToEntityAttribute(String value) {
         if (value == null) return null;
         return switch (value) {
-            case "M" -> UserGender.MALE;
-            case "F" -> UserGender.FEMALE;
+            case GENDER_MALE -> UserGender.MALE;
+            case GENDER_FEMALE -> UserGender.FEMALE;
             default -> throw new UnknownGenderException(String.format(UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT, value));
         };
     }

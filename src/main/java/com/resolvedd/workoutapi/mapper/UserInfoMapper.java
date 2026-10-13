@@ -8,6 +8,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT;
+import static com.resolvedd.workoutapi.constants.WorkoutConstants.GENDER_FEMALE;
+import static com.resolvedd.workoutapi.constants.WorkoutConstants.GENDER_MALE;
 
 @Mapper(componentModel = "spring")
 public interface UserInfoMapper {
@@ -20,17 +22,14 @@ public interface UserInfoMapper {
 
     default String mapGenderToString(UserGender gender) {
         if (gender == null) return null;
-        return switch (gender) {
-            case MALE -> "M";
-            case FEMALE -> "F";
-        };
+        return gender.getValue();
     }
 
     default UserGender mapStringToGender(String value) {
         if (value == null) return null;
         return switch (value) {
-            case "M" -> UserGender.MALE;
-            case "F" -> UserGender.FEMALE;
+            case GENDER_MALE -> UserGender.MALE;
+            case GENDER_FEMALE -> UserGender.FEMALE;
             default -> throw new UnknownGenderException(String.format(UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT, value));
         };
     }

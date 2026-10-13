@@ -6,6 +6,7 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_MESOCYCLE_STATUS_EXCEPTION_MESSAGE_FORMAT;
+import static com.resolvedd.workoutapi.constants.WorkoutConstants.*;
 
 @Converter(autoApply = true)
 public class MesocycleStatusConverter implements AttributeConverter<MesocycleStatus, String> {
@@ -20,9 +21,9 @@ public class MesocycleStatusConverter implements AttributeConverter<MesocycleSta
     public MesocycleStatus convertToEntityAttribute(String value) {
         if (value == null) return null;
         return switch (value) {
-            case "I" -> MesocycleStatus.INACTIVE;
-            case "A" -> MesocycleStatus.ACTIVE;
-            case "C" -> MesocycleStatus.COMPLETED;
+            case MESOCYCLE_INACTIVE_STATUS -> MesocycleStatus.INACTIVE;
+            case MESOCYCLE_ACTIVE_STATUS -> MesocycleStatus.ACTIVE;
+            case MESOCYCLE_COMPLETED_STATUS -> MesocycleStatus.COMPLETED;
             default -> throw new UnknownMesocycleStatusException(String.format(UNKNOWN_MESOCYCLE_STATUS_EXCEPTION_MESSAGE_FORMAT, value));
         };
     }
