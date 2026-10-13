@@ -19,6 +19,7 @@
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
 		<springdoc-openapi-starter-webmvc-ui.version>3.1.1</springdoc-openapi-starter-webmvc-ui.version>
+		<logstash-logback-encoder.version>9.0</logstash-logback-encoder.version>
 	</properties>
 
 	<dependencies>
@@ -67,6 +68,12 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>${springdoc-openapi-starter-webmvc-ui.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>${logstash-logback-encoder.version}</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

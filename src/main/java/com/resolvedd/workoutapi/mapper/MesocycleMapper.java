@@ -1,10 +1,13 @@
 package com.resolvedd.workoutapi.mapper;
 
 import com.resolvedd.workoutapi.dto.MesocycleDTO;
+import com.resolvedd.workoutapi.exception.UnknownMesocycleStatusException;
 import com.resolvedd.workoutapi.model.Mesocycle;
 import com.resolvedd.workoutapi.model.MesocycleStatus;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
+import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_MESOCYCLE_STATUS_EXCEPTION_MESSAGE_FORMAT;
 
 @Mapper(componentModel = "spring")
 public interface MesocycleMapper {
@@ -30,7 +33,7 @@ public interface MesocycleMapper {
             case "I" -> MesocycleStatus.INACTIVE;
             case "A" -> MesocycleStatus.ACTIVE;
             case "C" -> MesocycleStatus.COMPLETED;
-            default -> throw new IllegalArgumentException("Unexpected status: " + value);
+            default -> throw new UnknownMesocycleStatusException(String.format(UNKNOWN_MESOCYCLE_STATUS_EXCEPTION_MESSAGE_FORMAT, value));
         };
     }
 }

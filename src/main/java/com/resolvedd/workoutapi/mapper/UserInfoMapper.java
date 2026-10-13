@@ -1,10 +1,13 @@
 package com.resolvedd.workoutapi.mapper;
 
 import com.resolvedd.workoutapi.dto.UserInfoDTO;
+import com.resolvedd.workoutapi.exception.UnknownGenderException;
 import com.resolvedd.workoutapi.model.UserGender;
 import com.resolvedd.workoutapi.model.UserInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
+import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT;
 
 @Mapper(componentModel = "spring")
 public interface UserInfoMapper {
@@ -28,7 +31,7 @@ public interface UserInfoMapper {
         return switch (value) {
             case "M" -> UserGender.MALE;
             case "F" -> UserGender.FEMALE;
-            default -> throw new IllegalArgumentException("Unexpected status: " + value);
+            default -> throw new UnknownGenderException(String.format(UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT, value));
         };
     }
 }

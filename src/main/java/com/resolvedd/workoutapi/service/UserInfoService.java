@@ -7,7 +7,7 @@ import com.resolvedd.workoutapi.repository.UserInfoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static com.resolvedd.workoutapi.constants.ExceptionConstants.USER_INFO_NOT_FOUND_EXCEPTION_MESSAGE;
+import static com.resolvedd.workoutapi.constants.ExceptionConstants.USER_INFO_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +17,6 @@ public class UserInfoService {
     private final UserInfoMapper userInfoMapper;
 
     public UserInfoDTO findByUserId(Long userId) {
-        return userInfoRepository.findByUserId(userId).map(userInfoMapper::toDTO).orElseThrow(() -> new UserInfoNotFoundException(String.format(USER_INFO_NOT_FOUND_EXCEPTION_MESSAGE, userId)));
+        return userInfoRepository.findByUserId(userId).map(userInfoMapper::toDTO).orElseThrow(() -> new UserInfoNotFoundException(String.format(USER_INFO_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT, userId)));
     }
 }

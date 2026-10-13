@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.resolvedd.workoutapi.constants.ExceptionConstants.EXERCISE_NOT_FOUND_EXCEPTION_MESSAGE;
-import static com.resolvedd.workoutapi.constants.ExceptionConstants.WORKOUT_TEMPLATE_NOT_FOUND_EXCEPTION_MESSAGE;
+import static com.resolvedd.workoutapi.constants.ExceptionConstants.EXERCISE_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT;
+import static com.resolvedd.workoutapi.constants.ExceptionConstants.WORKOUT_TEMPLATE_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT;
 
 @Service
 @RequiredArgsConstructor
@@ -37,8 +37,8 @@ public class TemplateExerciseService {
         TemplateExercise templateExercise = templateExerciseMapper.toEntity(templateExerciseDTO);
         Long exerciseId = templateExerciseDTO.getExerciseId();
         Long workoutTemplateId = templateExerciseDTO.getWorkoutTemplateId();
-        templateExercise.setWorkoutTemplate(workoutTemplateRepository.findById(workoutTemplateId).orElseThrow(() -> new WorkoutTemplateNotFoundException(String.format(WORKOUT_TEMPLATE_NOT_FOUND_EXCEPTION_MESSAGE, workoutTemplateId))));
-        templateExercise.setExercise(exerciseRepository.findById(exerciseId).orElseThrow(() -> new ExerciseNotFoundException(String.format(EXERCISE_NOT_FOUND_EXCEPTION_MESSAGE, exerciseId))));
+        templateExercise.setWorkoutTemplate(workoutTemplateRepository.findById(workoutTemplateId).orElseThrow(() -> new WorkoutTemplateNotFoundException(String.format(WORKOUT_TEMPLATE_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT, workoutTemplateId))));
+        templateExercise.setExercise(exerciseRepository.findById(exerciseId).orElseThrow(() -> new ExerciseNotFoundException(String.format(EXERCISE_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT, exerciseId))));
         return templateExerciseMapper.toDTO(templateExerciseRepository.save(templateExercise));
     }
 

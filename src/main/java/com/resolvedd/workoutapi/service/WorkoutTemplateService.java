@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.resolvedd.workoutapi.constants.ExceptionConstants.MESOCYCLE_NOT_FOUND_EXCEPTION_MESSAGE;
+import static com.resolvedd.workoutapi.constants.ExceptionConstants.MESOCYCLE_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +32,7 @@ public class WorkoutTemplateService {
     public WorkoutTemplateDTO save(WorkoutTemplateDTO workoutTemplateDTO) {
         WorkoutTemplate workoutTemplate = workoutTemplateMapper.toEntity(workoutTemplateDTO);
         Long mesocycleId = workoutTemplateDTO.getMesocycleId();
-        workoutTemplate.setMesocycle(mesocycleRepository.findById(mesocycleId).orElseThrow(() -> new MesocycleNotFoundException(String.format(MESOCYCLE_NOT_FOUND_EXCEPTION_MESSAGE, mesocycleId))));
+        workoutTemplate.setMesocycle(mesocycleRepository.findById(mesocycleId).orElseThrow(() -> new MesocycleNotFoundException(String.format(MESOCYCLE_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT, mesocycleId))));
         return workoutTemplateMapper.toDTO(workoutTemplateRepository.save(workoutTemplate));
     }
 

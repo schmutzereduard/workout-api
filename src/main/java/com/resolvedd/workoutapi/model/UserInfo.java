@@ -23,7 +23,6 @@ public class UserInfo {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)
     private UserGender gender;
 
