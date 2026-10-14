@@ -65,8 +65,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
     }
 
-    @ExceptionHandler({ HttpMessageNotReadableException.class, MesocycleAlreadyInProgressException.class, MesocycleAlreadyEndedException.class, MesocycleNotStartedException.class })
-    public ResponseEntity<ErrorDTO> handleMesocycleException(RuntimeException ex) {
+    @ExceptionHandler({ HttpMessageNotReadableException.class, UnknownGenderException.class })
+    public ResponseEntity<ErrorDTO> handleGenericBadRequestException(RuntimeException ex) {
         ErrorDTO errorDTO = new ErrorDTO(
                 HttpStatus.BAD_REQUEST.value(),
                 HttpStatus.BAD_REQUEST.getReasonPhrase(),
@@ -77,7 +77,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({ MesocycleNotFoundException.class, ExerciseNotFoundException.class, WorkoutTemplateNotFoundException.class, UserInfoNotFoundException.class })
-    public ResponseEntity<ErrorDTO> handleNotFoundException(RuntimeException ex) {
+    public ResponseEntity<ErrorDTO> handleGenericNotFoundException(RuntimeException ex) {
         ErrorDTO errorDTO = new ErrorDTO(
                 HttpStatus.NOT_FOUND.value(),
                 HttpStatus.NOT_FOUND.getReasonPhrase(),

@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -50,14 +49,6 @@ public class MesocycleDTO {
             example = MESOCYCLE_SCHEMA_END_DATE_EXAMPLE
     )
     private LocalDate endDate;
-
-    @NotBlank(message = MESOCYCLE_STATUS_VALIDATION)
-    @Pattern(regexp = "^[IAC]$", message = MESOCYCLE_STATUS_VALIDATION2)
-    @Schema(
-            description = MESOCYCLE_SCHEMA_STATUS_DESCRIPTION,
-            requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private String status;
 
     @Schema(
             description = MESOCYCLE_SCHEMA_WORKOUT_TEMPLATES_DESCRIPTION

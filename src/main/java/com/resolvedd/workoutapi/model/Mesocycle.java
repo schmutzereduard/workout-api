@@ -31,9 +31,6 @@ public class Mesocycle {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @Column(name = "status", nullable = false)
-    private MesocycleStatus status = MesocycleStatus.INACTIVE;
-
     @OneToMany(mappedBy = "mesocycle", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
 }

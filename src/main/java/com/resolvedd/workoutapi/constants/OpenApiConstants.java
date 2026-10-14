@@ -52,16 +52,7 @@ public class OpenApiConstants {
     public static final String MESOCYCLE_CONTROLLER_GET_MESOCYCLES_OPERATION_DESCRIPTION = "Retrieves a list of all training mesocycles belonging to the authenticated user.";
     public static final String MESOCYCLE_CONTROLLER_GET_MESOCYCLES_OK_DESCRIPTION = "Successfully retrieved list";
 
-    public static final String MESOCYCLE_CONTROLLER_START_MESOCYCLE_OPERATION_SUMMARY = "Start a mesocycle";
-    public static final String MESOCYCLE_CONTROLLER_START_MESOCYCLE_OPERATION_DESCRIPTION = "Updated an Inactive mesocycle to Active status";
-    public static final String MESOCYCLE_CONTROLLER_START_MESOCYCLE_OK_DESCRIPTION = "Successfully started the mesocycle";
-    public static final String MESOCYCLE_CONTROLLER_START_MESOCYCLE_BAD_DESCRIPTION = "There is already an Active mesocycle / Selected mesocycle is already Completed";
     public static final String MESOCYCLE_CONTROLLER_MESOCYCLE_NOT_FOUND_DESCRIPTION = "Mesocycle not found";
-
-    public static final String MESOCYCLE_CONTROLLER_END_MESOCYCLE_OPERATION_SUMMARY = "Complete a mesocycle";
-    public static final String MESOCYCLE_CONTROLLER_END_MESOCYCLE_OPERATION_DESCRIPTION = "Updated an Active mesocycle to Inactive status";
-    public static final String MESOCYCLE_CONTROLLER_END_MESOCYCLE_OK_DESCRIPTION = "Successfully completed the mesocycle";
-    public static final String MESOCYCLE_CONTROLLER_END_MESOCYCLE_BAD_DESCRIPTION = "Selected mesocycle is already Completed / Selected mesocycle is not Active yet";
 
     public static final String MESOCYCLE_CONTROLLER_UPDATE_MESOCYCLE_OPERATION_SUMMARY = "Update a mesocycle";
     public static final String MESOCYCLE_CONTROLLER_UPDATE_MESOCYCLE_OPERATION_DESCRIPTION = "Updates an existing training mesocycle for the authenticated user.";
@@ -174,7 +165,6 @@ public class OpenApiConstants {
     public static final String MESOCYCLE_SCHEMA_START_DATE_EXAMPLE = "2026-06-01";
     public static final String MESOCYCLE_SCHEMA_END_DATE_DESCRIPTION = "End date of the mesocycle";
     public static final String MESOCYCLE_SCHEMA_END_DATE_EXAMPLE = "2026-06-28";
-    public static final String MESOCYCLE_SCHEMA_STATUS_DESCRIPTION = "Status of the mesocycle ('I' = Inactive, 'A' = Active, 'C' = Completed)";
 
     public static final String TEMPLATE_EXERCISE_SCHEMA_DESCRIPTION = "Template exercise transfer object linking an exercise to a workout template with target sets and reps";
     public static final String TEMPLATE_EXERCISE_SCHEMA_ID_DESCRIPTION = "Unique identifier of the template exercise";
