@@ -76,7 +76,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
     }
 
-    @ExceptionHandler({ MesocycleNotFoundException.class, ExerciseNotFoundException.class, WorkoutTemplateNotFoundException.class, UserInfoNotFoundException.class })
+    @ExceptionHandler({ UserInfoNotFoundException.class })
     public ResponseEntity<ErrorDTO> handleGenericNotFoundException(RuntimeException ex) {
         ErrorDTO errorDTO = new ErrorDTO(
                 HttpStatus.NOT_FOUND.value(),

@@ -7,7 +7,6 @@ public class ControllerConstants {
     public static final String BASE_API_URL = "/api/workout/";
     public static final String EXERCISE_CONTROLLER_REQUEST_MAPPING = BASE_API_URL + "exercises";
     public static final String MESOCYCLE_CONTROLLER_REQUEST_MAPPING = BASE_API_URL + "mesocycles";
-    public static final String TEMPLATE_EXERCISE_CONTROLLER_REQUEST_MAPPING = BASE_API_URL + "templateExercises";
     public static final String WORKOUT_CONTROLLER_REQUEST_MAPPING = BASE_API_URL + "workouts";
     public static final String WORKOUT_TEMPLATE_CONTROLLER_REQUEST_MAPPING = BASE_API_URL + "workoutTemplates";
 }

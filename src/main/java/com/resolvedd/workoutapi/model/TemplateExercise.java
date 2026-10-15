@@ -2,22 +2,20 @@ package com.resolvedd.workoutapi.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @Table(
         name = "template_exercise",
         uniqueConstraints = {
                 @UniqueConstraint(
-                        name = "template_order_in_workout",
+                        name = "template_order_in_workout_uk",
                         columnNames = {"template_id", "order_in_workout"}
                 )
         })
-public class TemplateExercise {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class TemplateExercise extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "template_id", nullable = false)
@@ -31,11 +29,11 @@ public class TemplateExercise {
     private Integer exerciseOrder;
 
     @Column(name = "target_sets", nullable = false)
-    private Integer targetSets = 3;
+    private Integer targetSets;
 
     @Column(name = "target_repetitions_min", nullable = false)
-    private Integer targetRepetitionsMin = 8;
+    private Integer targetRepetitionsMin;
 
     @Column(name = "target_repetitions_max", nullable = false)
-    private Integer targetRepetitionsMax = 12;
+    private Integer targetRepetitionsMax;
 }

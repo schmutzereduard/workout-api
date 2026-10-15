@@ -2,20 +2,15 @@ package com.resolvedd.workoutapi.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @Table(name = "user_info")
-public class UserInfo {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "user_id", unique = true, nullable = false)
-    private Long userId;
+public class UserInfo extends SyncableEntity {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;

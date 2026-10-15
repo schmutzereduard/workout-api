@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -39,11 +40,14 @@ public class ExerciseService {
 
     @Transactional
     public void deleteAllById(List<Long> ids) {
-        exerciseRepository.deleteAllById(ids);
+        ids.forEach(this::deleteById);
     }
 
     @Transactional
     public void deleteById(Long id) {
-        exerciseRepository.deleteById(id);
+        exerciseRepository.findById(id).ifPresent(exercise -> {
+            exercise.setDeletedAt(LocalDateTime.now());
+            exerciseRepository.save(exercise);
+        });
     }
 }

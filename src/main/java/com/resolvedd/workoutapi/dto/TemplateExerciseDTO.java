@@ -1,67 +1,39 @@
 package com.resolvedd.workoutapi.dto;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
 
-import static com.resolvedd.workoutapi.constants.OpenApiConstants.*;
-import static com.resolvedd.workoutapi.constants.ValidationConstants.*;
+public record TemplateExerciseDTO(
 
-@Data
-@Schema(description = TEMPLATE_EXERCISE_SCHEMA_DESCRIPTION)
-public class TemplateExerciseDTO {
+        Long id,
 
-    @Schema(
-            description = TEMPLATE_EXERCISE_SCHEMA_ID_DESCRIPTION,
-            accessMode = Schema.AccessMode.READ_ONLY
-    )
-    private Long id;
+        @NotNull(message = "WorkoutTemplateId cannot be empty in TemplateExercise!")
+        Long workoutTemplateId,
 
-    @Schema(
-            description = TEMPLATE_EXERCISE_SCHEMA_WORKOUT_TEMPLATE_ID_DESCRIPTION,
-            requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private Long workoutTemplateId;
+        @NotNull(message = "ExerciseId cannot be empty in TemplateExercise")
+        Long exerciseId,
 
-    @Schema(
-            description = TEMPLATE_EXERCISE_SCHEMA_EXERCISE_ID_DESCRIPTION,
-            requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private Long exerciseId;
+        @NotNull(message = "TemplateExercise order within the workout is required!")
+        @Positive(message = "TemplateExercise order number must be positive!")
+        Integer exerciseOrder,
 
-    @NotNull(message = EXERCISE_ORDER_VALIDATION)
-    @Positive(message = EXERCISE_ORDER_VALIDATION2)
-    @Schema(
-            description = TEMPLATE_EXERCISE_SCHEMA_EXERCISE_ORDER_DESCRIPTION,
-            requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private Integer exerciseOrder;
+        @NotNull(message = "TemplateExercise target sets is required!")
+        @Positive(message = "TemplateExercise target sets number must be positive!")
+        Integer targetSets,
 
-    @NotNull(message = TARGET_SETS_VALIDATION)
-    @Positive(message = TARGET_SETS_VALIDATION2)
-    @Schema(
-            description = TEMPLATE_EXERCISE_SCHEMA_TARGET_SETS_DESCRIPTION,
-            requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private Integer targetSets;
+        @NotNull(message = "Minimum TemplateExercise target repetitions is required!")
+        @Min(value = 1, message = "Minimum TemplateExercise target repetitions must be at least 1!")
+        Integer targetRepetitionsMin,
 
-    @NotNull(message = TARGET_REPETITIONS_MIN_VALIDATION)
-    @Min(1)
-    @Schema(
-            description = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MIN_DESCRIPTION,
-            example = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MIN_EXAMPLE,
-            requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private Integer targetRepetitionsMin;
+        @NotNull(message = "Maximum TemplateExercise target repetitions is required!")
+        @Min(value = 1, message = "Maximum TemplateExercise target repetitions number must be at least 1!")
+        Integer targetRepetitionsMax
+) {
 
-    @NotNull(message = TARGET_REPETITIONS_MAX_VALIDATION)
-    @Positive(message = TARGET_REPETITIONS_MAX_VALIDATION2)
-    @Schema(
-            description = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MAX_DESCRIPTION,
-            example = TEMPLATE_EXERCISE_SCHEMA_TARGET_REPETITIONS_MAX_EXAMPLE,
-            requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private Integer targetRepetitionsMax;
+    public TemplateExerciseDTO {
+        if (targetRepetitionsMax < targetRepetitionsMin) {
+            throw new IllegalArgumentException("Maximum target repetitions cannot be less than minimum target repetitions!");
+        }
+    }
 }

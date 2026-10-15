@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface WorkoutTemplateRepository extends JpaRepository<WorkoutTemplate, Long> {
 
-    List<WorkoutTemplate> findAllByMesocycleId(Long mesocycleId);
+    List<WorkoutTemplate> findAllByUserId(Long userId);
 }

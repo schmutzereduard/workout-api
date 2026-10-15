@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -32,11 +33,14 @@ public class MesocycleService {
 
     @Transactional
     public void deleteAllById(List<Long> ids) {
-        mesocycleRepository.deleteAllById(ids);
+        ids.forEach(this::deleteById);
     }
 
     @Transactional
     public void deleteById(Long id) {
-        mesocycleRepository.deleteById(id);
+        mesocycleRepository.findById(id).ifPresent(mesocycle -> {
+            mesocycle.setDeletedAt(LocalDateTime.now());
+            mesocycleRepository.save(mesocycle);
+        });
     }
 }

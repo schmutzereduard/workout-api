@@ -1,48 +1,43 @@
 package com.resolvedd.workoutapi.service;
 
 import com.resolvedd.workoutapi.dto.WorkoutTemplateDTO;
-import com.resolvedd.workoutapi.exception.MesocycleNotFoundException;
 import com.resolvedd.workoutapi.mapper.WorkoutTemplateMapper;
-import com.resolvedd.workoutapi.model.WorkoutTemplate;
-import com.resolvedd.workoutapi.repository.MesocycleRepository;
 import com.resolvedd.workoutapi.repository.WorkoutTemplateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
-
-import static com.resolvedd.workoutapi.constants.ExceptionConstants.MESOCYCLE_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT;
 
 @Service
 @RequiredArgsConstructor
 public class WorkoutTemplateService {
 
-    private final MesocycleRepository mesocycleRepository;
     private final WorkoutTemplateRepository workoutTemplateRepository;
     private final WorkoutTemplateMapper workoutTemplateMapper;
 
-    public List<WorkoutTemplateDTO> findAllByMesocycleId(Long mesocycleId) {
-        return workoutTemplateRepository.findAllByMesocycleId(mesocycleId).stream()
+    public List<WorkoutTemplateDTO> findAllWorkoutTemplates(Long userId) {
+        return workoutTemplateRepository.findAllByUserId(userId).stream()
                 .map(workoutTemplateMapper::toDTO)
                 .toList();
     }
 
     @Transactional
     public WorkoutTemplateDTO save(WorkoutTemplateDTO workoutTemplateDTO) {
-        WorkoutTemplate workoutTemplate = workoutTemplateMapper.toEntity(workoutTemplateDTO);
-        Long mesocycleId = workoutTemplateDTO.getMesocycleId();
-        workoutTemplate.setMesocycle(mesocycleRepository.findById(mesocycleId).orElseThrow(() -> new MesocycleNotFoundException(String.format(MESOCYCLE_NOT_FOUND_EXCEPTION_MESSAGE_FORMAT, mesocycleId))));
-        return workoutTemplateMapper.toDTO(workoutTemplateRepository.save(workoutTemplate));
+        return workoutTemplateMapper.toDTO(workoutTemplateRepository.save(workoutTemplateMapper.toEntity(workoutTemplateDTO)));
     }
 
     @Transactional
     public void deleteAllById(List<Long> ids) {
-        workoutTemplateRepository.deleteAllById(ids);
+        ids.forEach(this::deleteById);
     }
 
     @Transactional
     public void deleteById(Long id) {
-        workoutTemplateRepository.deleteById(id);
+        workoutTemplateRepository.findById(id).ifPresent(workoutTemplate -> {
+            workoutTemplate.setDeletedAt(LocalDateTime.now());
+            workoutTemplateRepository.save(workoutTemplate);
+        });
     }
 }

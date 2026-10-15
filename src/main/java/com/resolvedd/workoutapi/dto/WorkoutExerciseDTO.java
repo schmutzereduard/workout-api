@@ -1,47 +1,43 @@
 package com.resolvedd.workoutapi.dto;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
-import static com.resolvedd.workoutapi.constants.OpenApiConstants.*;
-import static com.resolvedd.workoutapi.constants.ValidationConstants.WORKOUT_EXERCISE_VALIDATION;
-import static com.resolvedd.workoutapi.constants.ValidationConstants.WORKOUT_EXERCISE_VALIDATION2;
+public record WorkoutExerciseDTO (
+        
+        SyncMetadata metadata,
 
-@Data
-@Schema(description = WORKOUT_EXERCISE_SCHEMA_DESCRIPTION)
-public class WorkoutExerciseDTO {
+        @NotNull(message = "Exercise order within the workout is required!")
+        @Positive(message = "Exercise order number must be positive!")
+        Integer orderInWorkout,
 
-    @Schema(
-            description = WORKOUT_EXERCISE_SCHEMA_ID_DESCRIPTION,
-            accessMode = Schema.AccessMode.READ_ONLY
-    )
-    private Long id;
+        @NotNull(message = "Target sets is required!")
+        @Positive(message = "Target sets number must be positive!")
+        Integer targetSets,
 
-    @Schema(
-            description = WORKOUT_EXERCISE_SCHEMA_EXERCISE_DESCRIPTION
-    )
-    private ExerciseDTO exercise;
+        @NotNull(message = "Minimum target repetitions is required!")
+        @Positive(message = "Minimum target repetitions number must be positive!")
+        Integer targetRepetitionsMin,
 
-    @NotNull(message = WORKOUT_EXERCISE_VALIDATION)
-    @Positive(message = WORKOUT_EXERCISE_VALIDATION2)
-    @Schema(
-            description = WORKOUT_EXERCISE_SCHEMA_ORDER_DESCRIPTION,
-            requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private int orderInWorkout;
+        @NotNull(message = "Maximum target repetitions is required!")
+        @Positive(message = "Maximum target repetitions number must be positive!")
+        Integer targetRepetitionsMax,
 
-    @Schema(
-            description = WORKOUT_EXERCISE_SCHEMA_NOTES_DESCRIPTION,
-            example = WORKOUT_EXERCISE_SCHEMA_NOTES_EXAMPLE
-    )
-    private String notes;
+        @Size(max = 255, message = "WorkoutExercise notes cannot be greater than 255 characters!")
+        String notes,
 
-    @Schema(
-            description = WORKOUT_EXERCISE_SCHEMA_SETS_DESCRIPTION
-    )
-    private List<ExerciseSetDTO> exerciseSets;
+        @Valid
+        List<ExerciseSetDTO> exerciseSets
+) {
+
+    public WorkoutExerciseDTO {
+        if (targetRepetitionsMax < targetRepetitionsMin) {
+            throw new IllegalArgumentException("Maximum target repetitions cannot be less than minimum target repetitions!");
+        }
+    }
+
 }

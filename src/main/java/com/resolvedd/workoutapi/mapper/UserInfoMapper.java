@@ -14,10 +14,22 @@ import static com.resolvedd.workoutapi.constants.WorkoutConstants.GENDER_MALE;
 @Mapper(componentModel = "spring")
 public interface UserInfoMapper {
 
+    @Mapping(target = "metadata.id", source = "id")
+    @Mapping(target = "metadata.clientId", source = "clientId")
+    @Mapping(target = "metadata.userId", source = "userId")
+    @Mapping(target = "metadata.createdAt", source = "createdAt")
+    @Mapping(target = "metadata.updatedAt", source = "updatedAt")
+    @Mapping(target = "metadata.deletedAt", source = "deletedAt")
     @Mapping(target = "gender", expression = "java(mapGenderToString(userInfo.getGender()))")
     UserInfoDTO toDTO(UserInfo userInfo);
 
-    @Mapping(target = "gender", expression = "java(mapStringToGender(userInfoDTO.getGender()))")
+    @Mapping(target = "id", source = "metadata.id")
+    @Mapping(target = "clientId", source = "metadata.clientId")
+    @Mapping(target = "userId", source = "metadata.userId")
+    @Mapping(target = "createdAt", source = "metadata.createdAt")
+    @Mapping(target = "updatedAt", source = "metadata.updatedAt")
+    @Mapping(target = "deletedAt", source = "metadata.deletedAt")
+    @Mapping(target = "gender", expression = "java(mapStringToGender(userInfoDTO.gender()))")
     UserInfo toEntity(UserInfoDTO userInfoDTO);
 
     default String mapGenderToString(UserGender gender) {

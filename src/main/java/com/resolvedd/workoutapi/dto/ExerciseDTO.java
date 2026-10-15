@@ -1,33 +1,16 @@
 package com.resolvedd.workoutapi.dto;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import jakarta.validation.constraints.Size;
 
-import static com.resolvedd.workoutapi.constants.OpenApiConstants.*;
-import static com.resolvedd.workoutapi.constants.ValidationConstants.EXERCISE_NAME_VALIDATION;
+public record ExerciseDTO(
 
-@Data
-@Schema(description = EXERCISE_DTO_SCHEMA_DESCRIPTION)
-public class ExerciseDTO {
+        SyncMetadata metadata,
 
-    @Schema(
-            description = EXERCISE_DTO_SCHEMA_ID_DESCRIPTION,
-            accessMode = Schema.AccessMode.READ_ONLY
-    )
-    private Long id;
+        @NotBlank(message = "Exercise name cannot be empty!")
+        @Size(min = 1, max = 255, message = "Exercise name cannot exceed 255 characters!")
+        String name,
 
-    @NotBlank(message = EXERCISE_NAME_VALIDATION)
-    @Schema(
-            description = EXERCISE_DTO_SCHEMA_NAME_DESCRIPTION,
-            example = EXERCISE_DTO_SCHEMA_NAME_EXAMPLE,
-            requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    private String name;
-
-    @Schema(
-            description = EXERCISE_DTO_SCHEMA_CUES_DESCRIPTION,
-            example = EXERCISE_DTO_SCHEMA_CUES_EXAMPLE
-    )
-    private String cues;
-}
+        @Size(max = 255, message = "Exercise cues cannot exceed 255 characters")
+        String cues
+) {}
