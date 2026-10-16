@@ -11,6 +11,6 @@ public record ExerciseDTO(
         @Size(min = 1, max = 255, message = "Exercise name cannot exceed 255 characters!")
         String name,
 
-        @Size(max = 255, message = "Exercise cues cannot exceed 255 characters")
-        String cues
+        @Size(max = 255, message = "Exercise notes cannot exceed 255 characters")
+        String notes
 ) {}
