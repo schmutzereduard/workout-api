@@ -26,6 +26,9 @@ public class WorkoutTemplate extends SyncableEntity {
     @Column(name = "notes")
     private String notes;
 
+    @Column(name = "is_deload", nullable = false)
+    private Boolean isDeload;
+
     @OneToMany(mappedBy = "workoutTemplate", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TemplateExercise> templateExercises = new ArrayList<>();
 

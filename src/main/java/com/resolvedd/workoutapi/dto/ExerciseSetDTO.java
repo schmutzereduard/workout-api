@@ -6,7 +6,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 import java.math.BigDecimal;
 
-public record ExerciseSetDTO (
+public record ExerciseSetDTO(
 
         Long id,
 
@@ -18,7 +18,19 @@ public record ExerciseSetDTO (
         @PositiveOrZero(message = "Exercise set weight number must be positive!")
         BigDecimal weight,
 
+        @NotNull(message = "ExerciseSet target repetitions is required!")
+        @PositiveOrZero(message = "ExerciseSet target repetitions number must be positive!")
+        Integer targetRepetitions,
+
         @NotNull(message = "ExerciseSet actual repetitions is required!")
         @PositiveOrZero(message = "ExerciseSet actual repetitions number must be positive!")
-        Integer actualRepetitions
-) {}
+        Integer actualRepetitions,
+
+        Integer repetitionsInReserve,
+
+        Boolean isCompleted
+) {
+        public ExerciseSetDTO {
+                isCompleted = actualRepetitions >= targetRepetitions;
+        }
+}

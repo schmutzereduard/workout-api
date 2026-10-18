@@ -20,6 +20,9 @@ public record WorkoutDTO (
         @Size(max = 255, message = "Workout notes cannot be greater than 255 characters!")
         String notes,
 
+        @NotNull(message = "Workout deload marker is required!")
+        Boolean isDeload,
+
         @NotNull(message = "Workout completion date is required!")
         LocalDateTime completedAt,
 

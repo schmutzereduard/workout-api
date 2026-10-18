@@ -24,6 +24,9 @@ public class Workout extends SyncableEntity {
     @Column(name = "notes")
     private String notes;
 
+    @Column(name = "is_deload",  nullable = false)
+    private Boolean isDeload;
+
     @Column(name = "completed_at", nullable = false)
     private LocalDateTime completedAt;
 

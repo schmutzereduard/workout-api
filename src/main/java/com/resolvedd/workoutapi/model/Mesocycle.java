@@ -17,10 +17,16 @@ public class Mesocycle extends SyncableEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "start_date")
+    @Column(name = "target_weeks", nullable = false)
+    private Integer targetWeeks;
+
+    @Column(name = "deload_week", nullable = false)
+    private Integer deloadWeek;
+
+    @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
     @OneToMany(mappedBy = "mesocycle", cascade = CascadeType.ALL, orphanRemoval = true)

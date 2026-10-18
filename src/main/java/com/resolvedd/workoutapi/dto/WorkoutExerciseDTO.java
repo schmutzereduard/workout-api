@@ -8,8 +8,8 @@ import jakarta.validation.constraints.Size;
 import java.util.List;
 
 public record WorkoutExerciseDTO (
-        
-        SyncMetadata metadata,
+
+        Long id,
 
         @NotNull(message = "Exercise order within the workout is required!")
         @Positive(message = "Exercise order number must be positive!")

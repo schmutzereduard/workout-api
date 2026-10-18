@@ -26,8 +26,17 @@ public class ExerciseSet extends BaseEntity {
     @Column(name = "weight", precision = 5, scale = 2, nullable = false)
     private BigDecimal weight;
 
+    @Column(name = "target_repetitions", nullable = false)
+    private Integer targetRepetitions;
+
     @Column(name = "actual_repetitions", nullable = false)
-    private int actualRepetitions;
+    private Integer actualRepetitions;
+
+    @Column(name = "repetitions_in_reserve")
+    private Integer repetitionsInReserve;
+
+    @Column(name = "is_completed")
+    private Boolean isCompleted;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "workout_exercise_id")

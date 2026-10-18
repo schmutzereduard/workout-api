@@ -2,6 +2,7 @@ package com.resolvedd.workoutapi.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public record WorkoutTemplateDTO (
 
         @Size(max = 255, message = "WorkoutTemplate notes cannot be greater than 255 characters!")
         String notes,
+
+        @NotNull(message = "WorkoutTemplate deload marker is required!")
+        Boolean isDeload,
 
         @Valid
         List<TemplateExerciseDTO> templateExercises
