@@ -23,7 +23,7 @@ public class Exercise extends SyncableEntity {
     @JoinTable(
             name = "exercise_muscle",
             joinColumns = @JoinColumn(name = "exercise_id"),
-            inverseJoinColumns = @JoinColumn(name = "muscle_id")
+            inverseJoinColumns = @JoinColumn(name = "muscle_group_id")
     )
     private List<MuscleGroup> muscleGroups = new ArrayList<>();
 }
