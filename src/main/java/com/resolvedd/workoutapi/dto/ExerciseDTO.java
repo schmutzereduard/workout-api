@@ -9,13 +9,13 @@ public record ExerciseDTO(
 
         SyncMetadata metadata,
 
-        @NotBlank(message = "Exercise name cannot be empty!")
-        @Size(min = 1, max = 255, message = "Exercise name cannot exceed 255 characters!")
+        @NotBlank(message = "Exercise name is required!")
+        @Size(min = 1, max = 255, message = "Exercise name must be 255 characters max!")
         String name,
 
-        @Size(max = 255, message = "Exercise notes cannot exceed 255 characters")
+        @Size(max = 255, message = "Exercise notes must be 255 characters max!")
         String notes,
 
-        @Size(min = 1, message = "Exercise must have at least 1 muscle group assigned")
+        @Size(min = 1, message = "Exercise must have at least 1 muscle group assigned!")
         List<String> muscleGroups
 ) {}

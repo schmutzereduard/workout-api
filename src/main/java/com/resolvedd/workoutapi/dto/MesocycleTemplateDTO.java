@@ -8,19 +8,15 @@ import jakarta.validation.constraints.Positive;
 public record MesocycleTemplateDTO (
 
         Long id,
-
-        @NotNull(message = "MesocycleTemplate mesocycleId is required!")
         Long mesocycleId,
-
-        @NotNull(message = "MesocycleTemplate workoutTemplateId is required!")
         Long workoutTemplateId,
 
-        @NotNull(message = "MesocycleTemplate week number is required!")
-        @Positive(message = "MesocycleTemplate week number must be positive!")
+        @NotNull(message = "Mesocycle template week number is required!")
+        @Positive(message = "Mesocycle template week must be a positive number!")
         Integer weekNumber,
 
-        @NotNull(message = "MesocycleTemplate day number is required!")
-        @Min(value = 1, message = "Day number must be at least 1!")
-        @Max(value = 7, message = "Day number cannot exceed 7!")
+        @NotNull(message = "Mesocycle template day number is required!")
+        @Min(value = 1, message = "Mesocycle day number must be at least 1!")
+        @Max(value = 7, message = "Mesocycle day number cannot exceed 7!")
         Integer dayNumber
 ) {}

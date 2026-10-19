@@ -9,25 +9,25 @@ public record UserInfoDTO (
 
         SyncMetadata metadata,
 
-        @NotBlank(message = "First name cannot be empty!")
+        @NotBlank(message = "First name is required!")
         String firstName,
 
-        @NotBlank(message = "Last name cannot be empty!")
+        @NotBlank(message = "Last name is required!")
         String lastName,
 
-        @NotBlank(message = "Gender cannot be empty!")
+        @NotBlank(message = "Gender is required!")
         @Pattern(regexp = "^[MF]$", message = "Gender must be either M (male) / F (female)!")
         String gender,
 
-        @NotNull(message = "Date of birth cannot be empty!")
+        @NotNull(message = "Date of birth is required!")
         @Past(message = "Date of birth cannot be in the future!")
         LocalDate dateOfBirth,
 
-        @NotNull(message = "Height cannot be empty!")
+        @NotNull(message = "Height is required!")
         @Positive(message = "Height must be a positive number!")
         Integer heightInCm,
 
-        @NotNull(message = "Weight cannot be empty!")
+        @NotNull(message = "Weight is required!")
         @Positive(message = "Weight must be a positive number!")
         BigDecimal weightInKg
 ) {}

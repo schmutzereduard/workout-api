@@ -10,20 +10,20 @@ public record ExerciseSetDTO(
 
         Long id,
 
-        @NotNull(message = "ExerciseSet set number is required!")
-        @Positive(message = "ExerciseSet set number must be positive!")
+        @NotNull(message = "Set number is required!")
+        @Positive(message = "Set number must be a positive number!")
         Integer setNumber,
 
-        @NotNull(message = "ExerciseSet weight is required!")
-        @PositiveOrZero(message = "Exercise set weight number must be positive!")
+        @NotNull(message = "Set weight is required!")
+        @PositiveOrZero(message = "Set weight number must be a positive number!")
         BigDecimal weight,
 
-        @NotNull(message = "ExerciseSet target repetitions is required!")
-        @PositiveOrZero(message = "ExerciseSet target repetitions number must be positive!")
+        @NotNull(message = "Set target repetitions is required!")
+        @PositiveOrZero(message = "Set target repetitions number must be a positive number!")
         Integer targetRepetitions,
 
-        @NotNull(message = "ExerciseSet actual repetitions is required!")
-        @PositiveOrZero(message = "ExerciseSet actual repetitions number must be positive!")
+        @NotNull(message = "Set actual repetitions is required!")
+        @PositiveOrZero(message = "Set actual repetitions number must be a positive number!")
         Integer actualRepetitions,
 
         Integer repetitionsInReserve,

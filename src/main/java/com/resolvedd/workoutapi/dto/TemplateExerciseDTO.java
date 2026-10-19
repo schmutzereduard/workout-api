@@ -7,33 +7,29 @@ import jakarta.validation.constraints.Positive;
 public record TemplateExerciseDTO(
 
         Long id,
-
-        @NotNull(message = "WorkoutTemplateId cannot be empty in TemplateExercise!")
         Long workoutTemplateId,
-
-        @NotNull(message = "ExerciseId cannot be empty in TemplateExercise")
         Long exerciseId,
 
-        @NotNull(message = "TemplateExercise order within the workout is required!")
-        @Positive(message = "TemplateExercise order number must be positive!")
+        @NotNull(message = "Exercise order in the workout is required!")
+        @Positive(message = "Exercise order must be a positive number!")
         Integer exerciseOrder,
 
-        @NotNull(message = "TemplateExercise target sets is required!")
-        @Positive(message = "TemplateExercise target sets number must be positive!")
+        @NotNull(message = "Exercise target sets is required!")
+        @Positive(message = "Exercise target sets must be a positive number!")
         Integer targetSets,
 
-        @NotNull(message = "Minimum TemplateExercise target repetitions is required!")
-        @Min(value = 1, message = "Minimum TemplateExercise target repetitions must be at least 1!")
+        @NotNull(message = "Min target repetitions is required!")
+        @Min(value = 1, message = "Min target repetitions must be at least 1!")
         Integer targetRepetitionsMin,
 
-        @NotNull(message = "Maximum TemplateExercise target repetitions is required!")
-        @Min(value = 1, message = "Maximum TemplateExercise target repetitions number must be at least 1!")
+        @NotNull(message = "Max target repetitions is required!")
+        @Min(value = 1, message = "Max target repetitions number must be at least 1!")
         Integer targetRepetitionsMax
 ) {
 
     public TemplateExerciseDTO {
         if (targetRepetitionsMax < targetRepetitionsMin) {
-            throw new IllegalArgumentException("Maximum target repetitions cannot be less than minimum target repetitions!");
+            throw new IllegalArgumentException("Max target repetitions cannot be less than min target repetitions!");
         }
     }
 }

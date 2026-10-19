@@ -14,13 +14,12 @@ public record WorkoutDTO (
 
         Long workoutTemplateId,
 
-        @NotBlank(message = "Workout name cannot be empty!")
+        @NotBlank(message = "Workout name is required!")
         String name,
 
-        @Size(max = 255, message = "Workout notes cannot be greater than 255 characters!")
+        @Size(max = 255, message = "Workout notes must be 255 characters max!")
         String notes,
 
-        @NotNull(message = "Workout deload marker is required!")
         Boolean isDeload,
 
         @NotNull(message = "Workout completion date is required!")
@@ -28,4 +27,10 @@ public record WorkoutDTO (
 
         @Valid
         List<WorkoutExerciseDTO> exercises
-) {}
+) {
+        public WorkoutDTO {
+                if (isDeload == null) {
+                        isDeload = false;
+                }
+        }
+}

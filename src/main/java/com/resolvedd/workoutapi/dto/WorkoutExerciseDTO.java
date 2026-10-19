@@ -11,23 +11,23 @@ public record WorkoutExerciseDTO (
 
         Long id,
 
-        @NotNull(message = "Exercise order within the workout is required!")
-        @Positive(message = "Exercise order number must be positive!")
+        @NotNull(message = "Exercise order in the workout is required!")
+        @Positive(message = "Exercise order must be a positive number!")
         Integer orderInWorkout,
 
         @NotNull(message = "Target sets is required!")
-        @Positive(message = "Target sets number must be positive!")
+        @Positive(message = "Target sets must be a positive number!")
         Integer targetSets,
 
-        @NotNull(message = "Minimum target repetitions is required!")
-        @Positive(message = "Minimum target repetitions number must be positive!")
+        @NotNull(message = "Min target repetitions is required!")
+        @Positive(message = "Min target repetitions must be a positive number!")
         Integer targetRepetitionsMin,
 
-        @NotNull(message = "Maximum target repetitions is required!")
-        @Positive(message = "Maximum target repetitions number must be positive!")
+        @NotNull(message = "Max target repetitions is required!")
+        @Positive(message = "Max target repetitions must be a positive number!")
         Integer targetRepetitionsMax,
 
-        @Size(max = 255, message = "WorkoutExercise notes cannot be greater than 255 characters!")
+        @Size(max = 255, message = "Exercise notes must be 255 characters max!")
         String notes,
 
         @Valid

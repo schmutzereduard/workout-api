@@ -12,7 +12,7 @@ public record MesocycleDTO(
 
         SyncMetadata metadata,
 
-        @NotBlank(message = "Mesocycle name cannot be empty!")
+        @NotBlank(message = "Mesocycle name is required!")
         String name,
 
         @NotNull(message = "Mesocycle target weeks is required!")
@@ -20,13 +20,13 @@ public record MesocycleDTO(
         Integer targetWeeks,
 
         @NotNull(message = "Mesocycle deload week is required!")
-        @Positive(message = "Mesocycle target weeks must be a positive number!")
+        @Positive(message = "Mesocycle deload week must be a positive number!")
         Integer deloadWeek,
 
-        @NotNull(message = "Mesocycle startDate is required!")
+        @NotNull(message = "Mesocycle start date is required!")
         LocalDate startDate,
 
-        @NotNull(message = "Mesocycle endDate is required!")
+        @NotNull(message = "Mesocycle end date is required!")
         LocalDate endDate,
 
         @Valid
@@ -34,10 +34,10 @@ public record MesocycleDTO(
 ) {
     public MesocycleDTO {
         if (endDate().isBefore(startDate)) {
-            throw new IllegalArgumentException("Mesocycle end date must be after start date");
+            throw new IllegalArgumentException("Mesocycle end date must be after start date!");
         }
         if (deloadWeek > targetWeeks) {
-            throw new IllegalArgumentException("Mesocycle deload week must be within target weeks");
+            throw new IllegalArgumentException("Mesocycle deload week must be within target weeks!");
         }
     }
 }
