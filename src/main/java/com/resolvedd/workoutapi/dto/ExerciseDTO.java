@@ -16,6 +16,6 @@ public record ExerciseDTO(
         @Size(max = 255, message = "Exercise notes must be 255 characters max!")
         String notes,
 
-        @Size(min = 1, message = "Exercise must have at least 1 muscle group assigned!")
+        @Size(min = 1, message = "Exercise must have at least 1 muscle group assigned!  ")
         List<String> muscleGroups
 ) {}
