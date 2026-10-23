@@ -14,6 +14,9 @@ public record TemplateExerciseDTO(
         @Positive(message = "Exercise order must be a positive number!")
         Integer exerciseOrder,
 
+        @Positive(message = "Exercise warmup sets must be a positive number!")
+        Integer warmupSets,
+
         @NotNull(message = "Exercise target sets is required!")
         @Positive(message = "Exercise target sets must be a positive number!")
         Integer targetSets,

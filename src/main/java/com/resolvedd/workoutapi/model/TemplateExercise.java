@@ -28,6 +28,9 @@ public class TemplateExercise extends BaseEntity {
     @Column(name = "order_in_workout", nullable = false)
     private Integer exerciseOrder;
 
+    @Column(name ="warmup_sets", nullable = false)
+    private Integer warmupSets;
+
     @Column(name = "target_sets", nullable = false)
     private Integer targetSets;
 

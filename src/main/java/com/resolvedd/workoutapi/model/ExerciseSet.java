@@ -21,7 +21,10 @@ import java.math.BigDecimal;
 public class ExerciseSet extends BaseEntity {
 
     @Column(name = "set_number", nullable = false)
-    private int setNumber;
+    private Integer setNumber;
+
+    @Column(name = "set_type", nullable = false)
+    private ExerciseSetType setType;
 
     @Column(name = "weight", precision = 5, scale = 2, nullable = false)
     private BigDecimal weight;

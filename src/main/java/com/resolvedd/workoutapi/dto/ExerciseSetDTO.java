@@ -14,6 +14,9 @@ public record ExerciseSetDTO(
         @Positive(message = "Set number must be a positive number!")
         Integer setNumber,
 
+        @NotNull(message = "Set type is required!")
+        String setType,
+
         @NotNull(message = "Set weight is required!")
         @PositiveOrZero(message = "Set weight number must be a positive number!")
         BigDecimal weight,
