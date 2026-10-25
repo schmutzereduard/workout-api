@@ -10,4 +10,5 @@ import java.util.List;
 public interface ExerciseRepository extends JpaRepository<Exercise, Long> {
 
     List<Exercise> findAllByUserId(Long userId);
+    List<Exercise> findByUserIdIsNullOrByUserId(Long userId);
 }

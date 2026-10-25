@@ -3,7 +3,6 @@ package com.resolvedd.workoutapi.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PrePersist;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.SQLRestriction;
@@ -12,7 +11,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -37,11 +35,4 @@ public abstract class SyncableEntity extends BaseEntity {
 
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
-
-    @PrePersist
-    protected void onCreate() {
-        if (this.clientId == null) {
-            this.clientId = UUID.randomUUID().toString();
-        }
-    }
 }

@@ -13,6 +13,9 @@ public record ExerciseDTO(
         @Size(min = 1, max = 255, message = "Exercise name must be 255 characters max!")
         String name,
 
+        @Size(max = 50, message = "Exercise variation must be 50 characters max!")
+        String variation,
+
         @Size(max = 255, message = "Exercise notes must be 255 characters max!")
         String notes,
 

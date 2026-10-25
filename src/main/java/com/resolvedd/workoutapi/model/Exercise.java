@@ -10,11 +10,25 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@Table(name = "exercise")
+@Table(
+        name = "exercise",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "name_uk",
+                        columnNames = {"user_id", "name", "variation"}
+                )
+        }
+)
 public class Exercise extends SyncableEntity {
 
-    @Column(name ="name", unique = true, nullable = false)
+    @Column(name = "user_id")
+    private Long userId;
+
+    @Column(name ="name", nullable = false)
     private String name;
+
+    @Column(name = "variation", nullable = false)
+    private String variation = "";
 
     @Column(name = "notes")
     private String notes;

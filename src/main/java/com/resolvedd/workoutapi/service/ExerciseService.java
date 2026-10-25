@@ -18,14 +18,8 @@ public class ExerciseService {
     private final ExerciseRepository exerciseRepository;
     private final ExerciseMapper exerciseMapper;
 
-    public List<ExerciseDTO> findAll() {
-        return exerciseRepository.findAll().stream()
-                .map(exerciseMapper::toDTO)
-                .toList();
-    }
-
     public List<ExerciseDTO> findAllByUserId(Long userId) {
-        return exerciseRepository.findAllByUserId(userId)
+        return exerciseRepository.findByUserIdIsNullOrByUserId(userId)
                 .stream()
                 .map(exerciseMapper::toDTO)
                 .toList();
