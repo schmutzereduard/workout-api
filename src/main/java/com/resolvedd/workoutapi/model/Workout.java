@@ -18,7 +18,7 @@ public class Workout extends SyncableEntity {
     @JoinColumn(name = "workout_template_id")
     private WorkoutTemplate workoutTemplate;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @Column(name = "notes")

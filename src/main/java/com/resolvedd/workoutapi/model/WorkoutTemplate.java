@@ -20,7 +20,7 @@ import java.util.List;
         })
 public class WorkoutTemplate extends SyncableEntity {
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @Column(name = "notes")

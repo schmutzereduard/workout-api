@@ -11,7 +11,7 @@ public record WorkoutTemplateDTO (
         SyncMetadata metadata,
 
         @NotBlank(message = "Workout template name is required!")
-        @Size(min = 1, max = 255, message = "Workout template name must be between 1 and 255 characters!")
+        @Size(min = 1, max = 50, message = "Workout template name must be between 1 and 50 characters!")
         String name,
 
         @Size(max = 255, message = "Workout template notes must be 255 characters max!")

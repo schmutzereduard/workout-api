@@ -24,10 +24,10 @@ public class Exercise extends SyncableEntity {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name ="name", nullable = false)
+    @Column(name ="name", nullable = false, length = 50)
     private String name;
 
-    @Column(name = "variation", nullable = false)
+    @Column(name = "variation", nullable = false, length = 50)
     private String variation = "";
 
     @Column(name = "notes")

@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "mesocycle")
 public class Mesocycle extends SyncableEntity {
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @Column(name = "target_weeks", nullable = false)

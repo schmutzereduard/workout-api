@@ -15,6 +15,7 @@ public record WorkoutDTO (
         Long workoutTemplateId,
 
         @NotBlank(message = "Workout name is required!")
+        @Size(min = 1, max = 50, message = "Workout name must be between 1 and 50 characters!")
         String name,
 
         @Size(max = 255, message = "Workout notes must be 255 characters max!")
