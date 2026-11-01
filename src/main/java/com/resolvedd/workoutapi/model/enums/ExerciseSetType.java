@@ -1,4 +1,4 @@
-package com.resolvedd.workoutapi.model;
+package com.resolvedd.workoutapi.model.enums;
 
 import lombok.Getter;
 

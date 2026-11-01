@@ -10,6 +10,7 @@ import java.util.List;
 
 public record WorkoutDTO (
 
+        @NotNull(message = "Sync metadata is required!")
         SyncMetadata metadata,
 
         Long workoutTemplateId,

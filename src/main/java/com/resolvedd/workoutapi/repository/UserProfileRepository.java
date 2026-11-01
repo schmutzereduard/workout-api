@@ -1,13 +1,13 @@
 package com.resolvedd.workoutapi.repository;
 
-import com.resolvedd.workoutapi.model.UserInfo;
+import com.resolvedd.workoutapi.model.UserProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
+public interface UserProfileRepository extends JpaRepository<UserProfile, Long> {
 
-    Optional<UserInfo> findByUserId(Long userId);
+    Optional<UserProfile> findByUserId(Long userId);
 }

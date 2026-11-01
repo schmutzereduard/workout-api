@@ -1,4 +1,4 @@
-package com.resolvedd.workoutapi.model;
+package com.resolvedd.workoutapi.model.enums;
 
 import lombok.Getter;
 
@@ -9,6 +9,7 @@ public enum UserGender {
     FEMALE("F");
 
     private final String value;
+
     UserGender(String value) {
         this.value = value;
     }

@@ -3,7 +3,7 @@ package com.resolvedd.workoutapi.mapper;
 import com.resolvedd.workoutapi.dto.ExerciseDTO;
 import com.resolvedd.workoutapi.model.Exercise;
 import com.resolvedd.workoutapi.model.MuscleGroup;
-import com.resolvedd.workoutapi.model.MuscleGroupName;
+import com.resolvedd.workoutapi.model.enums.MuscleGroupName;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

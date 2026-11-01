@@ -1,11 +1,10 @@
-package com.resolvedd.workoutapi.model.converter;
+package com.resolvedd.workoutapi.model.converters;
 
-import com.resolvedd.workoutapi.exception.UnknownGenderException;
-import com.resolvedd.workoutapi.model.ExerciseSetType;
+import com.resolvedd.workoutapi.model.enums.ExerciseSetType;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
-import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT;
+import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_SET_TYPE_EXCEPTION_MESSAGE_FORMAT;
 import static com.resolvedd.workoutapi.constants.WorkoutConstants.WARMUP_SET;
 import static com.resolvedd.workoutapi.constants.WorkoutConstants.WORKING_SET;
 
@@ -24,7 +23,7 @@ public class ExerciseSetTypeConverter implements AttributeConverter<ExerciseSetT
         return switch (value) {
             case WARMUP_SET -> ExerciseSetType.WARMUP;
             case WORKING_SET -> ExerciseSetType.WORKING;
-            default -> throw new UnknownGenderException(String.format(UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT, value));
+            default -> throw new IllegalArgumentException(String.format(UNKNOWN_SET_TYPE_EXCEPTION_MESSAGE_FORMAT, value));
         };
     }
 }

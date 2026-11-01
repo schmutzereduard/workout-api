@@ -11,6 +11,7 @@ import java.util.List;
 
 public record MesocycleDTO(
 
+        @NotNull(message = "Sync metadata is required!")
         SyncMetadata metadata,
 
         @NotBlank(message = "Mesocycle name is required!")

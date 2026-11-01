@@ -1,7 +1,6 @@
 package com.resolvedd.workoutapi.service;
 
 import com.resolvedd.workoutapi.constants.AuthConstants;
-import com.resolvedd.workoutapi.exception.AuthException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class AuthService {
                     .bodyToMono(Long.class)
                     .block();
         } catch (Exception e) {
-            throw new AuthException(e);
+            throw new IllegalStateException(e);
         }
     }
 }

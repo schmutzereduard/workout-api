@@ -2,12 +2,14 @@ package com.resolvedd.workoutapi.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
 public record WorkoutTemplateDTO (
 
+        @NotNull(message = "Sync metadata is required!")
         SyncMetadata metadata,
 
         @NotBlank(message = "Workout template name is required!")

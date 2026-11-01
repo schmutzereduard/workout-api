@@ -1,6 +1,7 @@
 package com.resolvedd.workoutapi.exception;
 
 import com.resolvedd.workoutapi.dto.ErrorDTO;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,8 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(AuthException.class)
-    public ResponseEntity<ErrorDTO> handleAuthException(AuthException ex) {
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ErrorDTO> handleIllegalState(IllegalStateException ex) {
         ErrorDTO errorDTO = new ErrorDTO(
                 HttpStatus.UNAUTHORIZED.value(),
                 HttpStatus.UNAUTHORIZED.getReasonPhrase(),
@@ -65,7 +66,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
     }
 
-    @ExceptionHandler({ HttpMessageNotReadableException.class, UnknownGenderException.class })
+    @ExceptionHandler({ HttpMessageNotReadableException.class, IllegalArgumentException.class })
     public ResponseEntity<ErrorDTO> handleGenericBadRequestException(RuntimeException ex) {
         ErrorDTO errorDTO = new ErrorDTO(
                 HttpStatus.BAD_REQUEST.value(),
@@ -76,7 +77,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
     }
 
-    @ExceptionHandler({ UserInfoNotFoundException.class })
+    @ExceptionHandler({ EntityNotFoundException.class })
     public ResponseEntity<ErrorDTO> handleGenericNotFoundException(RuntimeException ex) {
         ErrorDTO errorDTO = new ErrorDTO(
                 HttpStatus.NOT_FOUND.value(),

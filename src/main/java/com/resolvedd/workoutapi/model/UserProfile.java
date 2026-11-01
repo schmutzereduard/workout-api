@@ -1,16 +1,18 @@
 package com.resolvedd.workoutapi.model;
 
+import com.resolvedd.workoutapi.model.enums.UserGender;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@Table(name = "user_info")
-public class UserInfo extends SyncableEntity {
+@Table(name = "user_profile")
+public class UserProfile extends SyncableEntity {
 
     @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
@@ -25,8 +27,8 @@ public class UserInfo extends SyncableEntity {
     private LocalDate dateOfBirth;
 
     @Column(name = "height_cm", nullable = false)
-    private int heightInCm;
+    private Integer heightInCm;
 
-    @Column(name = "weight_kg", nullable = false)
-    private float weightInKg;
+    @Column(name = "weight_kg", precision = 5, scale = 2, nullable = false)
+    private BigDecimal weightInKg;
 }

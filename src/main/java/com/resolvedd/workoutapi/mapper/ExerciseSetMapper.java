@@ -1,13 +1,12 @@
 package com.resolvedd.workoutapi.mapper;
 
 import com.resolvedd.workoutapi.dto.ExerciseSetDTO;
-import com.resolvedd.workoutapi.exception.UnknownGenderException;
 import com.resolvedd.workoutapi.model.ExerciseSet;
-import com.resolvedd.workoutapi.model.ExerciseSetType;
+import com.resolvedd.workoutapi.model.enums.ExerciseSetType;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT;
+import static com.resolvedd.workoutapi.constants.ExceptionConstants.UNKNOWN_SET_TYPE_EXCEPTION_MESSAGE_FORMAT;
 import static com.resolvedd.workoutapi.constants.WorkoutConstants.*;
 
 @Mapper(componentModel = "spring")
@@ -30,7 +29,7 @@ public interface ExerciseSetMapper {
         return switch (value) {
             case WARMUP_SET -> ExerciseSetType.WARMUP;
             case WORKING_SET -> ExerciseSetType.WORKING;
-            default -> throw new UnknownGenderException(String.format(UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT, value));
+            default -> throw new IllegalArgumentException(String.format(UNKNOWN_SET_TYPE_EXCEPTION_MESSAGE_FORMAT, value));
         };
     }
 }

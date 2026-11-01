@@ -9,4 +9,7 @@ public class WorkoutConstants {
 
     public static final String WARMUP_SET = "Warmup";
     public static final String WORKING_SET = "Working";
+
+    public static final String WEIGHT_KG = "kg";
+    public static final String WEIGHT_LBS = "lbs";
 }

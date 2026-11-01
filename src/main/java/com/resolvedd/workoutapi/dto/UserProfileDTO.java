@@ -5,8 +5,9 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record UserInfoDTO (
+public record UserProfileDTO(
 
+        @NotNull(message = "Sync metadata is required!")
         SyncMetadata metadata,
 
         @NotBlank(message = "First name is required!")

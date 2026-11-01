@@ -1,7 +1,6 @@
-package com.resolvedd.workoutapi.model.converter;
+package com.resolvedd.workoutapi.model.converters;
 
-import com.resolvedd.workoutapi.exception.UnknownGenderException;
-import com.resolvedd.workoutapi.model.UserGender;
+import com.resolvedd.workoutapi.model.enums.UserGender;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
@@ -24,7 +23,7 @@ public class UserGenderConverter implements AttributeConverter<UserGender, Strin
         return switch (value) {
             case GENDER_MALE -> UserGender.MALE;
             case GENDER_FEMALE -> UserGender.FEMALE;
-            default -> throw new UnknownGenderException(String.format(UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT, value));
+            default -> throw new IllegalArgumentException(String.format(UNKNOWN_GENDER_EXCEPTION_MESSAGE_FORMAT, value));
         };
     }
 }

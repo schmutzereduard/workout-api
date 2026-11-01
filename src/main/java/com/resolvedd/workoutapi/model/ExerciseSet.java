@@ -1,5 +1,6 @@
 package com.resolvedd.workoutapi.model;
 
+import com.resolvedd.workoutapi.model.enums.ExerciseSetType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
